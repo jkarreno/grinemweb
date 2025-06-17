@@ -1,0 +1,115 @@
+/* Textos */
+.busqueda{
+	font-family:Verdana;
+	color: #FFFFFF;
+	font-weight: bold;	
+	font-size: 12px;
+}
+.textoboton{
+	font-family: Verdana;
+	color: #00548E;
+	font-weight: bold;
+	font-size: 11px;
+}
+
+.titulo1{
+	font-family: Century Gothic;
+	color: #FFFFFF;
+	font-weight: regular;
+	font-size: 17px;
+}
+.titulo2{
+	font-family: verdana;
+	color: #FFFFFF;
+	font-weight: regular;
+	font-size: 12px;
+}
+.direccion{
+	font-family: verdana;
+	color: #FFFFFF;
+	font-weight: regular;
+	font-size: 8px;
+}
+.textox {
+  font-family: verdana;
+	color: #333333;
+	font-weight: bold;
+	font-size: 12px;
+	text-decoration: none;
+	text-align: justify;
+}
+.textoy {
+  font-family: verdana;
+	color: #888888;
+	font-size: 11px;
+	text-decoration: none;
+}
+.textoevento2 {
+  font-family: verdana;
+	color: #000000;
+	font-size: 11px;
+	text-decoration: underline;
+}
+.textomarcapantalla {
+  font-family: verdana;
+	color: #333333;
+	font-weight: bold;
+	font-size: 10px;
+	text-decoration: none;
+}
+.textoevento1 {
+  font-family: verdana;
+	color: #00548e;
+	font-weight: bold;
+	font-size: 12px;
+	text-decoration: none;
+}
+.textomenu {
+  font-family: Arial;
+	color: #FFFFFF;
+	font-size: 19px;
+	text-decoration: none;
+	text-align: justify;
+}
+.textotit{
+  font-family: Arial;
+	color: #FFFFFF;
+	font-size: 12px;
+	text-decoration: none;
+	text-align: justify;
+}
+/* links */
+.textomenu a:hover{ text-decoration:underline;}
+.textomenu a:visited{ color:#FFFFFF;}
+.textox a:hover { text-decoration:underline; }
+.textox a:visited{color: #333333;}
+.titulo1 a:link { color:#FFFFFF; }
+.titulo1 a:hover { text-decoration: none; }
+.titulo1 a { text-decoration: none; }
+.titulo1 a:visited { color:#FFFFFF; }
+.titulo2 a:hover { text-decoration: none; }
+.titulo2 a:link { color:#FFFFFF; }
+.titulo2 a { text-decoration: none; }
+.titulo2 a:visited { color:#FFFFFF; }
+.textoboton a {text-decoration: none;}
+.textoboton a:hover {text-decoration: none; color: #0099FF;}
+.textoboton a:visited {color: #00548E;}
+/* Formas */
+.input {
+	background-color:#CCCCCC; 
+	border: 10px; 
+	border-color: #ef8e0a;
+	font-size:10pt; 
+	color: #00548E;
+}
+.campotexto
+{
+	font-family: verdana;
+	color: #2A2ADB;
+	font-weight: regular;
+	font-size: 11px;
+}
+/* tablas */
+.filaItem0 { background-color: #FFFFFF;  }
+.filaItem1 { background-color: #CCCCCC; }
+

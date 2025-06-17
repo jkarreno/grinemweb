@@ -1,0 +1,4 @@
+-poner un editor de texto
+-elimiar thk
+-capa de marca no debe de desaparecer
+-crear ayuda para el panel de control

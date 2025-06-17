@@ -1,0 +1,70 @@
+/* CSS Document */
+/* menu*/
+#menutop li {
+list-style-type: none;
+float: left;
+font-size: 20px;
+font-weight: bold;
+line-height: 1px;
+padding-right: 10px;
+}
+#menutop li a {
+	font-family: Arial;
+	font-size: 11px;
+	font-style: normal;
+	color: #FFFFFF;
+	font-weight: bold;
+	text-decoration: none;
+	display: block  !importnat;
+	position: relative;
+	width: 150px;
+}
+#menutop li a:hover {
+	font-family: Arial;
+	font-size: 11px;
+	font-style: normal;
+	color: #f68b00;
+	font-weight: bold;
+	text-decoration: none;
+}
+#menutop ul li ul span {
+margin: -20px 50px;
+width: 20px;
+height: 10px;
+position: absolute;
+}
+#menutop ul li ul {
+display: none; 
+background-color: #a19aaa;
+padding: 5px 0;
+position: absolute;
+margin: 5px 0px;
+.margin: 69px -170px;
+_margin: 69px -170px;
+}
+#menutop ul li:hover ul {
+display: block;
+}
+#menutop ul li ul li {
+display: block;
+float: none;
+position: relative;
+color: #ffffff;
+padding: 0 20px;
+line-height: 30px;
+}
+#menutop ul li ul li a{
+color: #ffffff;
+}
+
+#menutop ul li ul li a:hover {
+color: #f68b00;
+}
+#menutop li a:hover {
+font-family: Arial;
+	font-size: 11px;
+	font-style: normal;
+	color: #f68b00;
+	font-weight: bold;
+	text-decoration: none;
+}

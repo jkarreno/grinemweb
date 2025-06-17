@@ -1,0 +1,8 @@
+[26-Jun-2018 21:22:03 UTC] PHP Notice:  Undefined index: cliente in /home/grinemweb1996/public_html/horus/almacen/reporteinvini.php on line 20
+[26-Jun-2018 21:22:03 UTC] PHP Notice:  Undefined index: annoi in /home/grinemweb1996/public_html/horus/almacen/reporteinvini.php on line 22
+[26-Jun-2018 21:22:03 UTC] PHP Notice:  Undefined index: mesi in /home/grinemweb1996/public_html/horus/almacen/reporteinvini.php on line 22
+[26-Jun-2018 21:22:03 UTC] PHP Notice:  Undefined index: diai in /home/grinemweb1996/public_html/horus/almacen/reporteinvini.php on line 22
+[26-Jun-2018 21:22:03 UTC] PHP Notice:  Undefined index: annof in /home/grinemweb1996/public_html/horus/almacen/reporteinvini.php on line 23
+[26-Jun-2018 21:22:03 UTC] PHP Notice:  Undefined index: mesf in /home/grinemweb1996/public_html/horus/almacen/reporteinvini.php on line 23
+[26-Jun-2018 21:22:03 UTC] PHP Notice:  Undefined index: diaf in /home/grinemweb1996/public_html/horus/almacen/reporteinvini.php on line 23
+[26-Jun-2018 21:22:19 UTC] PHP Notice:  Undefined variable: producto in /home/grinemweb1996/public_html/horus/almacen/reportesininvini.php on line 58

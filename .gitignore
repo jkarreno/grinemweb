@@ -1,0 +1,11 @@
+#carpeta ads
+/ads/
+
+#carpeta well knonwn
+/.well-known/
+
+#carpeta bases
+/respaldo_bases/
+
+#archivos .log
+.log

@@ -1,0 +1,297 @@
+/* CSS Document */
+
+/* menutop*/
+#menutop a {
+	font-family: Arial;
+	font-size: 11px;
+	font-style: normal;
+	color: #FFFFFF;
+	font-weight: bold;
+	text-decoration: none;
+}
+#menutop a:hover {
+	font-family: Arial;
+	font-size: 11px;
+	font-style: normal;
+	color: #f68b00;
+	font-weight: bold;
+	text-decoration: none;
+}
+/*contenido*/
+#contenido a {
+	font-family: Arial;
+	font-size: 16px;
+	font-style: normal;
+	color: #fc3806;
+	font-weight: bold;
+	text-decoration: none;
+}
+#contenido a:hover {
+	font-family: Arial;
+	font-size: 16px;
+	font-style: normal;
+	color: #fc3806;
+	font-weight: bold;
+	text-decoration: underline;
+}
+a {
+	font-family: Arial;
+	font-size: 16px;
+	font-style: normal;
+	color: #fc3806;
+	font-weight: bold;
+	text-decoration: none;
+}
+a:hover {
+	font-family: Arial;
+	font-size: 16px;
+	font-style: normal;
+	color: #fc3806;
+	font-weight: bold;
+	text-decoration: underline;
+}
+a.Ntooltip {
+position: relative; /* es la posición normal */
+text-decoration: none !important; /* forzar sin subrayado */
+color:#0080C0 !important; /* forzar color del texto */
+font-weight:bold !important; /* forzar negritas */
+}
+
+a.Ntooltip:hover {
+z-index:999; /* va a estar por encima de todo */
+/*background-color:#000000;  DEBE haber un color de fondo */
+}
+
+a.Ntooltip span {
+display: none; /* el elemento va a estar oculto */
+}
+
+a.Ntooltip:hover span {
+display: block; /* se fuerza a mostrar el bloque */
+position: absolute; /* se fuerza a que se ubique en un lugar de la pantalla */
+top:2em; left:2em; /* donde va a estar */
+width:100px; /* el ancho por defecto que va a tener */
+padding:5px; /* la separación entre el contenido y los bordes */
+background-color: #0080C0; /* el color de fondo por defecto */
+color: #FFFFFF; /* el color de los textos por defecto */
+}
+/*menuizq*/
+#menuizq ul{
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: block;
+	text-align: left;
+}
+#menuizq li {
+	display: block;
+	margin: 0;
+	padding: 0;
+	line-height: normal;
+	font-family: Arial;
+	font-size: 10px;
+	font-weight: bold;	
+}
+
+#menuizq li a {
+	display: block;
+	outline: none;
+	padding: 0px 0 0px 0;
+	margin: 0;
+	text-decoration: none;
+	color: #3c833d;
+	background: url(../images/flechita.png) no-repeat 98% center;
+}
+
+#menuizq li a:hover {
+	color: #f26822;
+	text-decoration: none;
+	background: url(../images/flechita_over.png) no-repeat 98% center;
+}
+
+/*lightbox*/
+#lightbox {
+   background: white;
+   border: 5px solid rgb(122,188,122);
+}
+
+/*Entradas*/
+.input { 
+	background-color:#cccccc; 
+	border: 1px solid #cccccc;
+	font-weight: bold;
+	font-size:8pt; color: #000099;
+}
+.input2 { 
+	case: uppercase;
+}
+.button {
+	display: inline-block;
+	outline: none;
+	cursor: pointer;
+	text-align: center;
+	text-decoration: none;
+	font: 14px/100% Arial, Helvetica, sans-serif;
+	padding: .5em 2em .55em;
+	text-shadow: 0 1px 1px #FFFFFF;
+	-webkit-border-radius: .5em;
+	-moz-border-radius: .5em;
+	border-radius: .5em;
+	-webkit-box-shadow: 0 1px 2px rgba(0,0,0,.2);
+	-moz-box-shadow: 0 1px 2px rgba(0,0,0,.2);
+	box-shadow: 0 1px 2px rgba(0,0,0,.2);
+}
+.button:hover {
+	text-decoration: none;
+}
+.button:active {
+	position: relative;
+	top: 1px;
+}
+.orange {
+	color: #fef4e9;
+	border: solid 1px #da7c0c;
+	background: #f78d1d;
+	background: -webkit-gradient(linear, left top, left bottom, from(#faa51a), to(#f47a20));
+	background: -moz-linear-gradient(top,  #faa51a,  #f47a20);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#faa51a', endColorstr='#f47a20');
+}
+.orange:hover {
+	background: #f47c20;
+	background: -webkit-gradient(linear, left top, left bottom, from(#f88e11), to(#f06015));
+	background: -moz-linear-gradient(top,  #f88e11,  #f06015);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#f88e11', endColorstr='#f06015');
+}
+.orange:active {
+	color: #fcd3a5;
+	background: -webkit-gradient(linear, left top, left bottom, from(#f47a20), to(#faa51a));
+	background: -moz-linear-gradient(top,  #f47a20,  #faa51a);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#f47a20', endColorstr='#faa51a');
+}
+.boton {
+background-color: #f26822;
+border-style: solid;
+border-width: 0;
+font-size: 10pt;
+color: #FFFFFF;
+font-weight: bold;
+}
+SELECT{font-family: verdana; font-size: 8pt; font-weight: bold; color: #000099; background-color:#ab7c40;;}
+
+/*Texto*/
+.texto { /*Texto en negro bold*/
+	font-family: Helvetica, sans-serif;
+	font-size: 16px;
+	font-style: normal;
+	color: #000000;
+	font-weight: bold;	
+}
+.texto2 { 
+	font-family: Arial;
+	font-size: 16px;
+	font-style: normal;
+	color: #ffffff;
+	font-weight: bold;
+}
+.texto3 { /*titulos tablas */
+	font-family: Arial;
+	font-size: 16px;
+	font-style: normal;
+	color: #FFFFFF;
+	font-weight: bold;	
+}
+.textorojo {
+	font-family: Arial;
+	font-size: 16px;
+	font-style: normal;
+	color: #FF0000;	
+}
+.textored { /*Texto en rojo bold*/
+	font-family: Helvetica, sans-serif;
+	font-size: 16px;
+	font-style: normal;
+	color: #FF0000;
+	font-weight: bold;	
+}
+.textotit {
+	font-family: Helvetica, sans-serif;
+	font-size: 16px;
+	font-style: normal;
+	color: #000000;
+	font-weight: bold;	
+}
+.textotitreportes2 {
+	font-family: Helvetica, sans-serif;
+	font-size: 16px;
+	font-style: normal;
+	color: #000000;
+	text-decoration: underline;	
+}
+.textomensaje {
+	font-family: Helvetica, sans-serif;
+	font-size: 18px;
+	font-style: normal;
+	color: #4573B3;
+	font-weight: bold;	
+}
+.textopreguntas {
+	font-family: Helvetica, sans-serif;
+	font-size: 16px;
+	font-style: normal;
+	color: #000000;
+}
+.textoError { 
+	color : #000000; 
+	background-color : #FF0000; 
+	font-style : normal; 
+	font-family : Arial, Verdana; 
+	font-size : 16pt; 
+}
+.textoco { /*Texto cadena original*/
+	font-family: Helvetica, sans-serif;
+	font-size: 10px;
+	font-style: normal;
+	color: #000000;	
+}
+
+/*otros */
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+}
+
+.opacidad {
+	filter:alpha(opacity=80);
+	-moz-opacity:.80;
+	opacity:.80;
+}
+
+#contenido td{
+	border:1px solid #FFFFFF;
+}
+
+
+/*capas*/
+#conteni2 {
+	position:relative;
+	left:0px;
+	margin-left:auto;
+  top:0px;
+	width:873px;
+	margin: 0px auto; /* centrar con firefox */
+	text-align:center; /* centra las capas con internet explorer */
+}
+
+/*borde sombreado */
+.b1h, .b2h, .b3h, .b4h, .b2bh, .b3bh, .b4bh{font-size:1px; overflow:hidden; display:block;}
+.b1h {height:1px; background:#4db6fc margin:0 5px;}
+.b2h, .b2bh {height:1px; background:#4db6fc; border-right:2px solid #aaa; border-left:2px solid #aaa; margin:0 3px;}
+.b3h, .b3bh {height:1px; background:#4db6fc; border-right:1px solid #aaa; border-left:1px solid #aaa; margin:0 2px;}
+.b4h, .b4bh {height:2px; background:#4db6fc; border-right:1px solid #aaa; border-left:1px solid #aaa; margin:0 1px;}
+.b2bh, .b3bh, .b4bh {background: #bcbec0;}
+.headh {background: #4db6fc; border-right:1px solid #aaa; border-left:1px solid #aaa;}
+.headh h3 {margin: 0px 10px 0px 10px; padding-bottom: 3px;}
+.contenth {background: #bcbec0; border-right:1px solid #aaa; border-left:1px solid #aaa;}
+.contenth div {margin-left: 12px; padding-top: 5px;}

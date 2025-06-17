@@ -1,0 +1,37 @@
+/* Textos */
+.texto{
+	font-family:Verdana;
+	color: #FFFFFF;
+	font-weight: bold;	
+	font-size: 10px;
+}
+.textotitpanel{
+	font-family:Verdana;
+	color: #FFFFFF;
+	font-weight: bold;	
+	font-size: 12px;
+}
+.texto2{
+	font-family:Verdana;
+	color: #000000;
+	font-weight: bold;	
+	font-size: 12px;
+}
+.textomensaje{
+	font-family:Verdana;
+	color: #000000;
+	font-weight: bold;	
+	font-size: 14px;
+}
+/*Links*/
+/*botones*/
+.boton{
+	font-size:10px; 
+	font-family:Verdana; 
+	font-weight:bold; 
+	color:white; 
+	background:#638cb5; 
+	border:0px; 
+	width:120px; 
+	height:19px;
+}
