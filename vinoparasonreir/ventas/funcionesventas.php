@@ -11,7 +11,7 @@ function ventas($accion=NULL, $form=NULL, $anno)
         break;       
     }
 
-	$cadena=$form['cantidad'].'<form name="fventas" id="fventas">
+	$cadena='<form name="fventas" id="fventas">
             <table style="border:1px solid #FFFFFF" cellpadding="1" cellspacing="0" align="center">
 				<tr>
 					<td colspan="15" bgcolor="#ffffff" align="right" class="texto" style="border:1px solid #FFFFFF">| <a href="#" onclick="lightbox.style.visibility=\'visible\'; xajax_agregar_venta_2(\''.$anno.'\')">Agregar Venta</a> |</td>
@@ -167,4 +167,63 @@ function agregar_venta_2($anno)
     $respuesta = new xajaxResponse(); 
 	$respuesta->addAssign("lightbox","innerHTML",utf8_encode($cadena));
 	return $respuesta;
+}
+function ventas_vs_gastos($anno)
+{
+    include ("conexion.php");
+
+    $cadena='<form name="fventas" id="fventas">
+            <table style="border:1px solid #FFFFFF" cellpadding="1" cellspacing="0" align="center">
+				<tr>
+					<td colspan="15" bgcolor="#ffffff" align="right" class="texto" style="border:1px solid #FFFFFF">&nbsp;</td>
+					<td bgcolor="#FFFFFF" align="right" class="texto" style="border:1px solid #FFFFFF">&nbsp;</td>
+				</tr>
+				<tr>
+					<td colspan="15" bgcolor="#5263ab" align="center" class="texto3" style="border:1px solid #FFFFFF">VENTAS vs GASTOS <select name="anno" id="anno" onchange="xajax_ventas_vs_gastos(this.value)">';
+						for($i=2014; $i<=(date("Y")+2);$i++)
+						{
+							$cadena.='<option value="'.$i.'"';if($i==$anno){$cadena.=' selected';}$cadena.='>'.$i.'</option>';
+						}
+						$cadena.='</select></td>
+					<td bgcolor="#FFFFFF" align="right" class="texto" style="border:1px solid #FFFFFF">&nbsp;</td>
+				</tr>
+				<tr>
+					<td bgcolor="#5263ab" align="center" class="texto3" style="border:1px solid #FFFFFF"></td>
+					<td bgcolor="#5263ab" align="center" class="texto3" style="border:1px solid #FFFFFF">ENERO</td>
+					<td bgcolor="#5263ab" align="center" class="texto3" style="border:1px solid #FFFFFF">FEBRERO</td>
+					<td bgcolor="#5263ab" align="center" class="texto3" style="border:1px solid #FFFFFF">MARZO</td>
+					<td bgcolor="#5263ab" align="center" class="texto3" style="border:1px solid #FFFFFF">ABRIL</td>
+					<td bgcolor="#5263ab" align="center" class="texto3" style="border:1px solid #FFFFFF">MAYO</td>
+					<td bgcolor="#5263ab" align="center" class="texto3" style="border:1px solid #FFFFFF">JUNIO</td>
+					<td bgcolor="#5263ab" align="center" class="texto3" style="border:1px solid #FFFFFF">JULIO</td>
+					<td bgcolor="#5263ab" align="center" class="texto3" style="border:1px solid #FFFFFF">AGOSTO</td>
+					<td bgcolor="#5263ab" align="center" class="texto3" style="border:1px solid #FFFFFF">SEPTIEMBRE</td>
+					<td bgcolor="#5263ab" align="center" class="texto3" style="border:1px solid #FFFFFF">OCTUBRE</td>
+					<td bgcolor="#5263ab" align="center" class="texto3" style="border:1px solid #FFFFFF">NOVIEMBRE</td>
+					<td bgcolor="#5263ab" align="center" class="texto3" style="border:1px solid #FFFFFF">DICIEMBRE</td>
+				</tr>
+                <tr>
+                    <td bgcolor="#5263ab" align="center" class="texto3" style="border:1px solid #FFFFFF">VENTAS</td>';
+    for($i=1; $i<=12; $i++)
+    {
+        if($i<=9){$i='0'.$i;}
+        $ResVentas = mysql_fetch_array(mysql_query("SELECT SUM(Cantidad) AS Cantidad FROM ventas_pollos WHERE Fecha LIKE '".$anno."-".$i."-%'"));
+        $cadena.='  <td class="texto" align="center" style="border:1px solid #FFFFFF; background-color: #CCCCCC;">$ '.number_format($ResVentas['Cantidad'], 2).'</td>';
+    }
+    $cadena.='  </tr>
+                <tr>
+                    <td bgcolor="#5263ab" align="center" class="texto3" style="border:1px solid #FFFFFF">GASTOS</td>';
+    for($i=1; $i<=12; $i++)
+    {
+        if($i<=9){$i='0'.$i;}
+        $ResGastos = mysql_fetch_array(mysql_query("SELECT SUM(Cantidad) AS Cantidad FROM gastos_montos WHERE Fecha LIKE '".$anno."-".$i."-%' AND Estado='PAGADO'"));
+        $cadena.='  <td class="texto" align="center" style="border:1px solid #FFFFFF; background-color: #CCCCCC;">$ '.number_format($ResGastos['Cantidad'], 2).'</td>';
+    }
+    $cadena.='  </tr>
+            </table>
+        </form>';
+    
+    $respuesta = new xajaxResponse(); 
+    $respuesta->addAssign("contenido","innerHTML",utf8_encode($cadena));
+    return $respuesta;
 }

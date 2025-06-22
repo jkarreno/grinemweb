@@ -145,6 +145,7 @@ $xajax = new xajax();
 	//ventas
 	$xajax->registerFunction("ventas");
 	$xajax->registerFunction("agregar_venta_2");
+	$xajax->registerFunction("ventas_vs_gastos");
 
 	
 	$xajax->processRequests();
@@ -209,7 +210,9 @@ function mueveReloj(){
 					</ul>
 				</li>
 				<li><a href="#" onclick="xajax_ventas('','','<?php echo date("Y");?>')">Ventas</a>
-					
+					<ul>
+						<li><a href="#" onclick="xajax_ventas_vs_gastos('<?php echo date("Y");?>')">Ventas vs Gastos</a></li>
+					</ul>
 				</li>
 				<li><a href="#" onclick="xajax_cobranza()">Vencido</a>
 					<ul>
