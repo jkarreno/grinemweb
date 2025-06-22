@@ -143,7 +143,7 @@ function agregar_costo($form=NULL)
 					<td class="texto" align="right" bgcolor="#CCCCCC" style="border:1px solid #FFFFFF"><input type="text" name="t_costotela" id="t_costotela" class="input" value="0"></td>
 				</tr>
 				<tr>
-					<td class="texto" align="right" bgcolor="#CCCCCC" style="border:1px solid #FFFFFF">Diseño Molde: </td>
+					<td class="texto" align="right" bgcolor="#CCCCCC" style="border:1px solid #FFFFFF">Diseï¿½o Molde: </td>
 					<td class="texto" align="right" bgcolor="#CCCCCC" style="border:1px solid #FFFFFF"><input type="text" name="cu_disenomolde" id="cu_disenomolde" class="input" onkeyup="costos_total_diseno_molde(this.value, c_disenomolde.value, t_disenomolde); costo_prenda(parseFloat(t_costotela.value), parseFloat(t_disenomolde.value), parseFloat(t_maquila.value), parseFloat(t_boton.value), parseFloat(t_remaches.value), parseFloat(t_cierre.value), parseFloat(t_bordado.value), parseFloat(t_cinturon.value), parseFloat(t_etiqintbor.value), parseFloat(t_placa.value), parseFloat(t_etiqtallainterna.value), parseFloat(t_etiqadherible.value), parseFloat(t_etiqtallaexterna.value), parseFloat(t_etiqcolgante.value), parseFloat(t_etiqmonarch.value), parseFloat(t_etiquetapielexterna.value), parseFloat(t_lavado.value), parseFloat(t_transfer.value), parseFloat(t_terminado.value), parseFloat(t_transporte.value), parseFloat(t_comisionvendedor.value), parseFloat(t_utilidadgabriel.value), costoporprenda); costo_utilidad(parseFloat(costoporprenda.value), parseFloat(precioventa.value), utilidad); costo_utilidad_real(utilidad.value, tprendas.value, utilidadreal)"></td>
 					<td class="texto" align="right" bgcolor="#CCCCCC" style="border:1px solid #FFFFFF"><input type="text" name="c_disenomolde" id="c_disenomolde" class="input" onkeyup="costos_total_diseno_molde(cu_disenomolde.value, this.value, t_disenomolde); costo_prenda(parseFloat(t_costotela.value), parseFloat(t_disenomolde.value), parseFloat(t_maquila.value), parseFloat(t_boton.value), parseFloat(t_remaches.value), parseFloat(t_cierre.value), parseFloat(t_bordado.value), parseFloat(t_cinturon.value), parseFloat(t_etiqintbor.value), parseFloat(t_placa.value), parseFloat(t_etiqtallainterna.value), parseFloat(t_etiqadherible.value), parseFloat(t_etiqtallaexterna.value), parseFloat(t_etiqcolgante.value), parseFloat(t_etiqmonarch.value), parseFloat(t_etiquetapielexterna.value), parseFloat(t_lavado.value), parseFloat(t_transfer.value), parseFloat(t_terminado.value), parseFloat(t_transporte.value), parseFloat(t_comisionvendedor.value), parseFloat(t_utilidadgabriel.value), costoporprenda); costo_utilidad(parseFloat(costoporprenda.value), parseFloat(precioventa.value), utilidad); costo_utilidad_real(utilidad.value, tprendas.value, utilidadreal)"></td>
 					<td class="texto" align="right" bgcolor="#CCCCCC" style="border:1px solid #FFFFFF"><input type="text" name="t_disenomolde" id="t_disenomolde" class="input" value="0"></td>
@@ -257,7 +257,7 @@ function agregar_costo($form=NULL)
 					<td class="texto" align="right" bgcolor="#CCCCCC" style="border:1px solid #FFFFFF"><input type="text" name="t_transporte" id="t_transporte" class="input" value="0"></td>
 				</tr>
 				<tr>
-					<td class="texto" align="right" bgcolor="#CCCCCC" style="border:1px solid #FFFFFF">Comisión Vendedor <select name="comven" id="comven" onchange="comision_vendedor(precioventa.value, this.value, cu_comisionvendedor); costos(cu_comisionvendedor.value, c_comisionvendedor.value, t_comisionvendedor); costo_prenda(parseFloat(t_costotela.value), parseFloat(t_disenomolde.value), parseFloat(t_maquila.value), parseFloat(t_boton.value), parseFloat(t_remaches.value), parseFloat(t_cierre.value), parseFloat(t_bordado.value), parseFloat(t_cinturon.value), parseFloat(t_etiqintbor.value), parseFloat(t_placa.value), parseFloat(t_etiqtallainterna.value), parseFloat(t_etiqadherible.value), parseFloat(t_etiqtallaexterna.value), parseFloat(t_etiqcolgante.value), parseFloat(t_etiqmonarch.value), parseFloat(t_etiquetapielexterna.value), parseFloat(t_lavado.value), parseFloat(t_transfer.value), parseFloat(t_terminado.value), parseFloat(t_transporte.value), parseFloat(t_comisionvendedor.value), parseFloat(t_utilidadgabriel.value), costoporprenda); costo_utilidad(parseFloat(costoporprenda.value), parseFloat(precioventa.value), utilidad); costo_utilidad_real(utilidad.value, tprendas.value, utilidadreal)">';
+					<td class="texto" align="right" bgcolor="#CCCCCC" style="border:1px solid #FFFFFF">Comisiï¿½n Vendedor <select name="comven" id="comven" onchange="comision_vendedor(precioventa.value, this.value, cu_comisionvendedor); costos(cu_comisionvendedor.value, c_comisionvendedor.value, t_comisionvendedor); costo_prenda(parseFloat(t_costotela.value), parseFloat(t_disenomolde.value), parseFloat(t_maquila.value), parseFloat(t_boton.value), parseFloat(t_remaches.value), parseFloat(t_cierre.value), parseFloat(t_bordado.value), parseFloat(t_cinturon.value), parseFloat(t_etiqintbor.value), parseFloat(t_placa.value), parseFloat(t_etiqtallainterna.value), parseFloat(t_etiqadherible.value), parseFloat(t_etiqtallaexterna.value), parseFloat(t_etiqcolgante.value), parseFloat(t_etiqmonarch.value), parseFloat(t_etiquetapielexterna.value), parseFloat(t_lavado.value), parseFloat(t_transfer.value), parseFloat(t_terminado.value), parseFloat(t_transporte.value), parseFloat(t_comisionvendedor.value), parseFloat(t_utilidadgabriel.value), costoporprenda); costo_utilidad(parseFloat(costoporprenda.value), parseFloat(precioventa.value), utilidad); costo_utilidad_real(utilidad.value, tprendas.value, utilidadreal)">';
 	for($i=0;$i<=20;$i++)
 	{
 		if($i<=9){$i='0'.$i;}
@@ -466,7 +466,7 @@ function editar_costo($costo, $campo=NULL, $fcampo=NULL, $fcomen=NULL, $fpcomen=
 	if($ResCosto["Check_DisenoMolde"]==1 AND $ResCosto["P_DisenoMolde"]=="No Pagado"){$bgcolor_DisenoMolde='#cccccc';}
 	if($ResCosto["Check_DisenoMolde"]==1 AND $ResCosto["P_DisenoMolde"]=="Pagado"){$bgcolor_DisenoMolde='#ffc0cb';}
 	$cadena.='	<tr>
-					<td class="texto" align="right" bgcolor="'.$bgcolor_DisenoMolde.'" style="border:1px solid #FFFFFF"><a href="#" class="Ntooltip" onclick="document.getElementById(\'lightbox\').innerHTML = \'\'; lightbox.style.visibility=\'visible\';xajax_costos_check(\''.$ResCosto["Id"].'\', \'DisenoMolde\')">Diseño Molde: <span>'.$ResCosto["Comen_DisenoMolde"].'</span></a> </td>
+					<td class="texto" align="right" bgcolor="'.$bgcolor_DisenoMolde.'" style="border:1px solid #FFFFFF"><a href="#" class="Ntooltip" onclick="document.getElementById(\'lightbox\').innerHTML = \'\'; lightbox.style.visibility=\'visible\';xajax_costos_check(\''.$ResCosto["Id"].'\', \'DisenoMolde\')">Diseï¿½o Molde: <span>'.$ResCosto["Comen_DisenoMolde"].'</span></a> </td>
 					<td class="texto" align="right" bgcolor="'.$bgcolor_DisenoMolde.'" style="border:1px solid #FFFFFF"><input value="'.$ResCosto["CU_DisenoMolde"].'" type="text" name="cu_disenomolde" id="cu_disenomolde" class="input" onkeyup="costos_total_diseno_molde(this.value, c_disenomolde.value, t_disenomolde); costo_prenda(parseFloat(t_costotela.value), parseFloat(t_disenomolde.value), parseFloat(t_maquila.value), parseFloat(t_boton.value), parseFloat(t_remaches.value), parseFloat(t_cierre.value), parseFloat(t_bordado.value), parseFloat(t_cinturon.value), parseFloat(t_etiqintbor.value), parseFloat(t_placa.value), parseFloat(t_etiqtallainterna.value), parseFloat(t_etiqadherible.value), parseFloat(t_etiqtallaexterna.value), parseFloat(t_etiqcolgante.value), parseFloat(t_etiqmonarch.value), parseFloat(t_etiquetapielexterna.value), parseFloat(t_lavado.value), parseFloat(t_transfer.value), parseFloat(t_terminado.value), parseFloat(t_transporte.value), parseFloat(t_comisionvendedor.value), parseFloat(t_utilidadgabriel.value), costoporprenda); costo_utilidad(parseFloat(costoporprenda.value), parseFloat(precioventa.value), utilidad); costo_utilidad_real(utilidad.value, tprendas.value, utilidadreal)"';if($ResCosto["Check_DisenoMolde"]==1 AND $_SESSION["perfil"]!='administra'){$cadena.=' readonly="readonly"';}$cadena.='></td>
 					<td class="texto" align="right" bgcolor="'.$bgcolor_DisenoMolde.'" style="border:1px solid #FFFFFF"><input value="'.$ResCosto["C_DisenoMolde"].'" type="text" name="c_disenomolde" id="c_disenomolde" class="input" onkeyup="costos_total_diseno_molde(cu_disenomolde.value, this.value, t_disenomolde); costo_prenda(parseFloat(t_costotela.value), parseFloat(t_disenomolde.value), parseFloat(t_maquila.value), parseFloat(t_boton.value), parseFloat(t_remaches.value), parseFloat(t_cierre.value), parseFloat(t_bordado.value), parseFloat(t_cinturon.value), parseFloat(t_etiqintbor.value), parseFloat(t_placa.value), parseFloat(t_etiqtallainterna.value), parseFloat(t_etiqadherible.value), parseFloat(t_etiqtallaexterna.value), parseFloat(t_etiqcolgante.value), parseFloat(t_etiqmonarch.value), parseFloat(t_etiquetapielexterna.value), parseFloat(t_lavado.value), parseFloat(t_transfer.value), parseFloat(t_terminado.value), parseFloat(t_transporte.value), parseFloat(t_comisionvendedor.value), parseFloat(t_utilidadgabriel.value), costoporprenda); costo_utilidad(parseFloat(costoporprenda.value), parseFloat(precioventa.value), utilidad); costo_utilidad_real(utilidad.value, tprendas.value, utilidadreal)"';if($ResCosto["Check_DisenoMolde"]==1 AND $_SESSION["perfil"]!='administra'){$cadena.=' readonly="readonly"';}$cadena.='></td>
 					<td class="texto" align="right" bgcolor="'.$bgcolor_DisenoMolde.'" style="border:1px solid #FFFFFF"><input value="'.$ResCosto["T_DisenoMolde"].'" type="text" name="t_disenomolde" id="t_disenomolde" class="input" value="0"';if($ResCosto["Check_DisenoMolde"]==1 AND $_SESSION["perfil"]!='administra'){$cadena.=' readonly="readonly"';}$cadena.='></td>
@@ -694,7 +694,7 @@ function editar_costo($costo, $campo=NULL, $fcampo=NULL, $fcomen=NULL, $fpcomen=
 	if($ResCosto["Check_ComisionVendedor"]==1 AND $ResCosto["P_ComisionVendedor"]=="No Pagado"){$bgcolor_ComisionVendedor='#cccccc';}
 	if($ResCosto["Check_ComisionVendedor"]==1 AND $ResCosto["P_ComisionVendedor"]=="Pagado"){$bgcolor_ComisionVendedor='#ffc0cb';}
 	$cadena.='	<tr>
-					<td class="texto" align="right" bgcolor="'.$bgcolor_ComisionVendedor.'" style="border:1px solid #FFFFFF"><a href="#" class="Ntooltip" onclick="document.getElementById(\'lightbox\').innerHTML = \'\'; lightbox.style.visibility=\'visible\';xajax_costos_check(\''.$ResCosto["Id"].'\', \'ComisionVendedor\')">Comisión Vendedor <span>'.$ResCosto["Comen_ComisionVendedor"].'</span></a> <select name="comven" id="comven" onchange="comision_vendedor(precioventa.value, this.value, cu_comisionvendedor); costos(cu_comisionvendedor.value, c_comisionvendedor.value, t_comisionvendedor); costo_prenda(parseFloat(t_costotela.value), parseFloat(t_disenomolde.value), parseFloat(t_maquila.value), parseFloat(t_boton.value), parseFloat(t_remaches.value), parseFloat(t_cierre.value), parseFloat(t_bordado.value), parseFloat(t_etiqintbor.value), parseFloat(t_placa.value), parseFloat(t_etiqtallainterna.value), parseFloat(t_etiqadherible.value), parseFloat(t_etiqtallaexterna.value), parseFloat(t_etiqcolgante.value), parseFloat(t_etiqmonarch.value), parseFloat(t_etiquetapielexterna.value), parseFloat(t_lavado.value), parseFloat(t_transfer.value), parseFloat(t_terminado.value), parseFloat(t_transporte.value), parseFloat(t_comisionvendedor.value), parseFloat(t_utilidadgabriel.value), costoporprenda); costo_utilidad(parseFloat(costoporprenda.value), parseFloat(precioventa.value), utilidad); costo_utilidad_real(utilidad.value, tprendas.value, utilidadreal)">';
+					<td class="texto" align="right" bgcolor="'.$bgcolor_ComisionVendedor.'" style="border:1px solid #FFFFFF"><a href="#" class="Ntooltip" onclick="document.getElementById(\'lightbox\').innerHTML = \'\'; lightbox.style.visibility=\'visible\';xajax_costos_check(\''.$ResCosto["Id"].'\', \'ComisionVendedor\')">Comisiï¿½n Vendedor <span>'.$ResCosto["Comen_ComisionVendedor"].'</span></a> <select name="comven" id="comven" onchange="comision_vendedor(precioventa.value, this.value, cu_comisionvendedor); costos(cu_comisionvendedor.value, c_comisionvendedor.value, t_comisionvendedor); costo_prenda(parseFloat(t_costotela.value), parseFloat(t_disenomolde.value), parseFloat(t_maquila.value), parseFloat(t_boton.value), parseFloat(t_remaches.value), parseFloat(t_cierre.value), parseFloat(t_bordado.value), parseFloat(t_etiqintbor.value), parseFloat(t_placa.value), parseFloat(t_etiqtallainterna.value), parseFloat(t_etiqadherible.value), parseFloat(t_etiqtallaexterna.value), parseFloat(t_etiqcolgante.value), parseFloat(t_etiqmonarch.value), parseFloat(t_etiquetapielexterna.value), parseFloat(t_lavado.value), parseFloat(t_transfer.value), parseFloat(t_terminado.value), parseFloat(t_transporte.value), parseFloat(t_comisionvendedor.value), parseFloat(t_utilidadgabriel.value), costoporprenda); costo_utilidad(parseFloat(costoporprenda.value), parseFloat(precioventa.value), utilidad); costo_utilidad_real(utilidad.value, tprendas.value, utilidadreal)">';
 	for($i=0;$i<=20;$i++)
 	{
 		if($i<=9){$i='0'.$i;}
@@ -851,7 +851,7 @@ function costos_check($idcosto, $campo)
 	switch ($campo)
 	{
 		case 'CostoTela': $mostrar='Costo Tela'; break;
-		case 'DisenoMolde': $mostrar='Diseño Molde'; break;
+		case 'DisenoMolde': $mostrar='Diseï¿½o Molde'; break;
 		case 'Maquila': $mostrar='Maquila'; break;
 		case 'Boton': $mostrar='Boton'; break;
 		case 'Remaches': $mostrar='Remaches'; break;
@@ -966,7 +966,7 @@ function comentarios_pago($idcosto, $campo)
 	switch ($campo)
 	{
 		case 'CostoTela': $mostrar='Costo Tela'; break;
-		case 'DisenoMolde': $mostrar='Diseño Molde'; break;
+		case 'DisenoMolde': $mostrar='Diseï¿½o Molde'; break;
 		case 'Maquila': $mostrar='Maquila'; break;
 		case 'Boton': $mostrar='Boton'; break;
 		case 'Remaches': $mostrar='Remaches'; break;
@@ -1032,6 +1032,261 @@ function eliminar_costo($costo, $borra='no')
 		mysql_query("DELETE FROM costos WHERE Id='".$costo."'") or die(mysql_error());
 		
 		$cadena='<p align="center" class="textomensaje">Se elimino el costo del modelo '.$ResModeloN["Nombre"].' satisfactoriamente</p>';
+	}
+	
+	$respuesta = new xajaxResponse(); 
+	$respuesta->addAssign("contenido","innerHTML",utf8_encode($cadena));
+	return $respuesta;
+}
+function costos_pollos()
+{
+	include ("conexion.php");
+
+	$cadena='<table border="0" style="border:1px solid #FFFFFF" cellpadding="3" cellspacing="0" align="center">
+				<tr>
+					<td colspan="10" align="right" class="texto">| <a href="#" onclick="xajax_agregar_costo_pollo()">Agregar Costo</a> |</td>
+				</tr>
+				<tr>
+					<td bgcolor="#5263ab" align="center" class="texto3" style="border:1px solid #FFFFFF">&nbsp;</td>
+					<td bgcolor="#5263ab" align="center" class="texto3" style="border:1px solid #FFFFFF">PRODUCTO</td>
+					<td bgcolor="#5263ab" align="center" class="texto3" style="border:1px solid #FFFFFF">COSTO REAL</td>
+					<td bgcolor="#5263ab" align="center" class="texto3" style="border:1px solid #FFFFFF">PRECIO VENTA</td>
+					<td bgcolor="#5263ab" align="center" class="texto3" style="border:1px solid #FFFFFF">&nbsp;</td>
+					<td bgcolor="#5263ab" align="center" class="texto3" style="border:1px solid #FFFFFF">&nbsp;</td>
+				</tr>';
+			
+	$ResPollos = mysql_query("SELECT Id, Producto, PrecioVenta FROM costos_pollos WHERE IdProducto IS NULL ORDER BY Id ASC"); 
+	$i=1;
+	while($RResP = mysql_fetch_array($ResPollos))
+	{
+		$ResCosto = mysql_fetch_array(mysql_query("SELECT SUM(Total) AS CostoReal FROM costos_pollos WHERE IdProducto = '".$RResP["Id"]."'"));
+
+		$cadena.='<tr>
+					<td class="texto" align="left" bgcolor="#CCCCCC" style="border:1px solid #FFFFFF">'.$i.'</td>
+					<td class="texto" align="left" bgcolor="#CCCCCC" style="border:1px solid #FFFFFF">'.$RResP["Producto"].'</td>
+					<td class="texto" align="right" bgcolor="#CCCCCC" style="border:1px solid #FFFFFF">$ '.number_format($ResCosto["CostoReal"], 2).'</td>
+					<td class="texto" align="right" bgcolor="#CCCCCC" style="border:1px solid #FFFFFF">$ '.number_format($RResP["PrecioVenta"], 2).'</td>
+					<td class="texto" align="center" bgcolor="#CCCCCC" style="border:1px solid #FFFFFF"><a href="#" onclick="xajax_agregar_costo_pollo(\'\', \''.$RResP["Id"].'\')"><img src="images/edit.png"></a></td>
+					<td class="texto" align="center" bgcolor="#CCCCCC" style="border:1px solid #FFFFFF"><a href="#" onclick="xajax_eliminar_costo_pollos(\''.$RResP["Id"].'\')"><img src="images/x.png"></a></td>
+				</tr>';
+		$i++;
+	}
+	$cadena.='</table>';
+
+	$respuesta = new xajaxResponse(); 
+	$respuesta->addAssign("contenido","innerHTML",utf8_encode($cadena));
+	return $respuesta;
+}
+function agregar_costo_pollo($form=NULL, $idprod=NULL)
+{
+	include ("conexion.php");
+
+	if($form!=NULL AND $idprod==NULL)
+	{
+		if($form["idproducto"]!=0)
+		{
+			mysql_query("UPDATE costos_pollos SET Producto = '".$form["producto"]."',
+													PrecioVenta = '".$form["precioventa"]."'
+											WHERE Id= '".$form["idproducto"]."'");
+
+			$IdProducto = $form["idproducto"];
+			$producto = $form["producto"];
+			$precioventa = $form["precioventa"];
+
+			$mensaje = '<p align="center" class="textomensaje">Se actualizo el producto '.$producto.' satisfactoriamente</p>';
+		}
+		else
+		{
+			mysql_query("INSERT INTO costos_pollos (Producto, PrecioVenta) VALUES ('".$form["producto"]."', '".$form["precioventa"]."')");
+
+			$ResProducto = mysql_fetch_array(mysql_query("SELECT Id, Producto, PrecioVenta FROM costos_pollos WHERE Producto='".$form["producto"]."' ORDER BY Id DESC LIMIT 1"));
+
+			$IdProducto = $ResProducto["Id"];
+			$producto = $ResProducto["Producto"];
+			$precioventa = $ResProducto["PrecioVenta"];
+
+			$mensaje = '<p align="center" class="textomensaje">Se agrego el producto '.$producto.' satisfactoriamente</p>';
+		}
+	}
+	elseif($form==NULL AND $idprod!=NULL)
+	{
+		$ResProducto = mysql_fetch_array(mysql_query("SELECT Id, Producto, PrecioVenta FROM costos_pollos WHERE Id='".$idprod."' ORDER BY Id DESC LIMIT 1"));
+
+			$IdProducto = $ResProducto["Id"];
+			$producto = $ResProducto["Producto"];
+			$precioventa = $ResProducto["PrecioVenta"];
+	}
+
+	$cadena=$mensaje.'<form name="fadcostopollo" id="fadcostopollo">
+			<table style="border:1px solid #FFFFFF" cellpadding="3" cellspacing="0" align="center">
+				<tr>
+					<td align="left" class="texto" colspan="4">
+						<table style="border:1px solid #FFFFFF" cellpadding="3" cellspacing="0" align="left">
+							<tr>
+								<td colspan="3" bgcolor="#5263ab" align="center" class="texto3" style="border:1px solid #FFFFFF">Costo Real</td>
+							</tr>
+							<tr>
+								<td class="texto" align="right" bgcolor="#CCCCCC" style="border:1px solid #FFFFFF">Producto: </td>
+								<td class="texto" align="left" bgcolor="#CCCCCC" style="border:1px solid #FFFFFF"><input type="text" name="producto" id="producto" class="input" value="'.$producto.'"></td>
+								<td class="texto" align="left" bgcolor="#CCCCCC" style="border:1px solid #FFFFFF"></td>
+							</tr>
+							<tr>
+								<td class="texto" align="right" bgcolor="#CCCCCC" style="border:1px solid #FFFFFF">Precio Venta: </td>
+								<td class="texto" align="left" bgcolor="#CCCCCC" style="border:1px solid #FFFFFF"><input type="text" name="precioventa" id="precioventa" class="input" value="'.$precioventa.'"></td>
+								<td class="texto" align="left" bgcolor="#CCCCCC" style="border:1px solid #FFFFFF">
+									<input type="hidden" name="hacer" id="hacer" value="guardapollo">
+									<input type="hidden" name="idproducto" id="idproducto" value="'.(isset($IdProducto) ? $IdProducto : '0').'">
+									<input type="button" name="botguardarprod" id="botguardarprod" value="Guardar" onclick="xajax_agregar_costo_pollo(xajax.getFormValues(\'fadcostopollo\'))">
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			</table>
+			</form>';
+		
+		if(isset($IdProducto))
+		{
+			$cadena.='<div id="divcostopollo">
+				<form name="fcostodetalleprod" id="fcostodetalleprod">
+				<table style="border:1px solid #FFFFFF" cellpadding="3" cellspacing="0" align="center">
+					<tr>
+						<td class="texto" align="center" bgcolor="#5263ab" style="border:1px solid #FFFFFF">Producto</td>
+						<td class="texto" align="center" bgcolor="#5263ab" style="border:1px solid #FFFFFF">Costo</td>
+						<td class="texto" align="center" bgcolor="#5263ab" style="border:1px solid #FFFFFF">Cantidad</td>
+						<td class="texto" align="center" bgcolor="#5263ab" style="border:1px solid #FFFFFF"Total</td>
+						<td class="texto" align="center" bgcolor="#5263ab" style="border:1px solid #FFFFFF">&nbsp;</td>
+					</tr>
+					<tr>
+						<td class="texto" align="right" bgcolor="#CCCCCC" style="border:1px solid #FFFFFF">
+							<input type="text" name="producto" id="producto" class="input">
+						</td>
+						<td class="texto" align="right" bgcolor="#CCCCCC" style="border:1px solid #FFFFFF">
+							<input type="text" name="costo" id="costo" class="input" onkeyup="costos(this.value, cantidad.value, total)" value="0">
+						</td>
+						<td class="texto" align="right" bgcolor="#CCCCCC" style="border:1px solid #FFFFFF">
+							<input type="text" name="cantidad" id="cantidad" class="input" onkeyup="costos(costo.value, this.value, total)" value="0">
+						</td>
+						<td class="texto" align="right" bgcolor="#CCCCCC" style="border:1px solid #FFFFFF">
+							<input type="text" name="total" id="total" class="input" value="0">
+						</td>
+						<td class="texto" align="right" bgcolor="#CCCCCC" style="border:1px solid #FFFFFF">
+							<input type="hidden" name="idproducto" id="idproducto" value="'.$IdProducto.'">
+							<input type="button" name="botguardarprod" id="botguardarprod" value="Guardar" onclick="xajax_agregar_costo_pollo_detalle(xajax.getFormValues(\'fcostodetalleprod\'))">
+						</td>
+					</tr>';
+			$ResCostoPolloDetalle = mysql_query("SELECT * FROM costos_pollos WHERE IdProducto='".$IdProducto."' ORDER BY Id ASC");
+			while($RResCPD = mysql_fetch_array($ResCostoPolloDetalle))
+			{
+				$cadena.='<tr>
+						<td class="texto" align="left" bgcolor="#FFFFFF" style="border:1px solid #FFFFFF">'.$RResCPD["Producto"].'</td>
+						<td class="texto" align="right" bgcolor="#FFFFFF" style="border:1px solid #FFFFFF">'.$RResCPD["Costo"].'</td>
+						<td class="texto" align="right" bgcolor="#FFFFFF" style="border:1px solid #FFFFFF">'.$RResCPD["Cantidad"].'</td>
+						<td class="texto" align="right" bgcolor="#FFFFFF" style="border:1px solid #FFFFFF">'.$RResCPD["Total"].'</td>
+						<td class="texto" align="center" bgcolor="#FFFFFF" style="border:1px solid #FFFFFF"><a href="#" onclick="xajax_agregar_costo_pollo_detalle(\''.$RResCPD["Id"].'\', \''.$IdProducto.'\')"><img src="images/x.png"></a></td>
+					</tr>';
+			}
+			$cadena.='</table>
+				</form>
+			</div>';
+		}
+
+		$cadena.='<script>
+			setTimeout(function() { 
+				$(\'.textomensaje\').fadeOut(\'fast\'); 
+			}, 1000)
+		</script>';
+
+
+	$respuesta = new xajaxResponse(); 
+	$respuesta->addAssign("contenido","innerHTML",utf8_encode($cadena));
+	return $respuesta;
+}
+function agregar_costo_pollo_detalle($form, $delprod=NULL)
+{
+	include ("conexion.php");
+
+	$cadena='';
+
+	if($delprod!=NULL)
+	{
+		mysql_query("DELETE FROM costos_pollos WHERE Id = '".$form."'");
+
+		$idproducto = $delprod;
+
+		//$cadena.="DELETE FROM costos_pollos WHERE Id = '".$form."'";
+	}
+	else
+	{
+		$idproducto = $form["idproducto"];
+
+		mysql_query("INSERT INTO costos_pollos (IdProducto, Producto, Costo, Cantidad, Total) 
+										VALUES ('".$idproducto."', '".$form["producto"]."', '".$form["costo"]."', '".$form["cantidad"]."', '".$form["total"]."')");
+	}
+
+	$cadena.='<form name="fcostodetalleprod" id="fcostodetalleprod">
+				<table style="border:1px solid #FFFFFF" cellpadding="3" cellspacing="0" align="center">
+					<tr>
+						<td class="texto" align="center" bgcolor="#5263ab" style="border:1px solid #FFFFFF">Producto</td>
+						<td class="texto" align="center" bgcolor="#5263ab" style="border:1px solid #FFFFFF">Costo</td>
+						<td class="texto" align="center" bgcolor="#5263ab" style="border:1px solid #FFFFFF">Cantidad</td>
+						<td class="texto" align="center" bgcolor="#5263ab" style="border:1px solid #FFFFFF"Total</td>
+						<td class="texto" align="center" bgcolor="#5263ab" style="border:1px solid #FFFFFF">&nbsp;</td>
+					</tr>
+					<tr>
+						<td class="texto" align="right" bgcolor="#CCCCCC" style="border:1px solid #FFFFFF">
+							<input type="text" name="producto" id="producto" class="input">
+						</td>
+						<td class="texto" align="right" bgcolor="#CCCCCC" style="border:1px solid #FFFFFF">
+							<input type="text" name="costo" id="costo" class="input" onkeyup="costos(this.value, cantidad.value, total)" value="0">
+						</td>
+						<td class="texto" align="right" bgcolor="#CCCCCC" style="border:1px solid #FFFFFF">
+							<input type="text" name="cantidad" id="cantidad" class="input" onkeyup="costos(costo.value, this.value, total)" value="0">
+						</td>
+						<td class="texto" align="right" bgcolor="#CCCCCC" style="border:1px solid #FFFFFF">
+							<input type="text" name="total" id="total" class="input" value="0">
+						</td>
+						<td class="texto" align="right" bgcolor="#CCCCCC" style="border:1px solid #FFFFFF">
+							<input type="hidden" name="idproducto" id="idproducto" value="'.$idproducto.'">
+							<input type="button" name="botguardarprod" id="botguardarprod" value="Guardar" onclick="xajax_agregar_costo_pollo_detalle(xajax.getFormValues(\'fcostodetalleprod\'))">
+						</td>
+					</tr>';
+	$ResCostoPolloDetalle = mysql_query("SELECT * FROM costos_pollos WHERE IdProducto='".$idproducto."' ORDER BY Id ASC");
+	while($RResCPD = mysql_fetch_array($ResCostoPolloDetalle))
+	{
+		$cadena.='<tr>
+					<td class="texto" align="left" bgcolor="#FFFFFF" style="border:1px solid #FFFFFF">'.$RResCPD["Producto"].'</td>
+					<td class="texto" align="right" bgcolor="#FFFFFF" style="border:1px solid #FFFFFF">'.$RResCPD["Costo"].'</td>
+					<td class="texto" align="right" bgcolor="#FFFFFF" style="border:1px solid #FFFFFF">'.$RResCPD["Cantidad"].'</td>
+					<td class="texto" align="right" bgcolor="#FFFFFF" style="border:1px solid #FFFFFF">'.$RResCPD["Total"].'</td>
+					<td class="texto" align="center" bgcolor="#FFFFFF" style="border:1px solid #FFFFFF"><a href="#" onclick="xajax_agregar_costo_pollo_detalle(\''.$RResCPD["Id"].'\', \''.$idproducto.'\')"><img src="images/x.png"></a></td>
+				</tr>';
+	}
+	$cadena.='</table>
+			</form>';
+
+
+	$respuesta = new xajaxResponse(); 
+	$respuesta->addAssign("divcostopollo","innerHTML",utf8_encode($cadena));
+	return $respuesta;
+}
+
+function eliminar_costo_pollos($costo, $borra='no')
+{
+	include ("conexion.php");
+	
+	$ResPollo=mysql_fetch_array(mysql_query("SELECT Id, Producto FROM costos_pollos WHERE Id='".$costo."' LIMIT 1"));
+	
+	if($borra=='no')
+	{
+		$cadena='<p align="center" class="textomensaje">Desea eliminar el producto '.$ResPollo["Producto"].'?<br />
+				 <a href="#" onclick="xajax_costos_pollos()">NO</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" onclick="xajax_eliminar_costo_pollos(\''.$costo.'\', \'si\')">SI</a></p>';
+	}
+	elseif($borra=='si')
+	{
+		mysql_query("DELETE FROM costos_pollos WHERE Id='".$costo."'") or die(mysql_error());
+		
+		$cadena='<p align="center" class="textomensaje">Se elimino el producto '.$Respollo["Producto"].' satisfactoriamente</p>';
 	}
 	
 	$respuesta = new xajaxResponse(); 

@@ -107,6 +107,7 @@ $xajax = new xajax();
 	$xajax->registerFunction("calcular_todo");
 	//costos
 	$xajax->registerFunction("costos");
+	$xajax->registerFunction("costos_pollos");
 	$xajax->registerFunction("agregar_costo");
 	$xajax->registerFunction("agregar_costo_2");
 	$xajax->registerFunction("editar_costo");
@@ -115,6 +116,9 @@ $xajax = new xajax();
 	$xajax->registerFunction("comentarios_costo");
 	$xajax->registerFunction("comentarios_pago");
 	$xajax->registerFunction("eliminar_costo");
+	$xajax->registerFunction("agregar_costo_pollo");
+	$xajax->registerFunction("agregar_costo_pollo_detalle");
+	$xajax->registerFunction("eliminar_costo_pollos");
 	//metros
 	$xajax->registerFunction("metros");
 	$xajax->registerFunction("editar_compra_metros");
@@ -244,7 +248,11 @@ function mueveReloj(){
 					<ul>
 					</ul>
 				</li>
-				<li><a href="#" onclick="xajax_costos()">Costos</a>
+				<li><a href="#" onclick="xajax_costos()">Costos Pantalones</a>
+					<ul>
+					</ul>
+				</li>
+				<li><a href="#" onclick="xajax_costos_pollos()">Costos Pollos</a>
 					<ul>
 					</ul>
 				</li>
