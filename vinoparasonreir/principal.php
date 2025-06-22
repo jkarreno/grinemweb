@@ -27,6 +27,7 @@ include ("programacion/funcionesprogramacion.php");
 include ("costos/funcionescostos.php");
 include ("metros/funcionesmetros.php");
 include ("agentes/funcionesagentes.php");
+include ("ventas/funcionesventas.php");
 
 
 $xajax = new xajax(); 
@@ -141,6 +142,9 @@ $xajax = new xajax();
 	$xajax->registerFunction("agregar_agente_2");
 	$xajax->registerFunction("editar_agente");
 	$xajax->registerFunction("editar_agente_2");
+	//ventas
+	$xajax->registerFunction("ventas");
+	$xajax->registerFunction("agregar_venta_2");
 
 	
 	$xajax->processRequests();
@@ -203,6 +207,9 @@ function mueveReloj(){
 					<ul>
 						<li><a href="#" onclick="xajax_agregar_cliente()">Agregar Cliente</a></li>
 					</ul>
+				</li>
+				<li><a href="#" onclick="xajax_ventas('','','<?php echo date("Y");?>')">Ventas</a>
+					
 				</li>
 				<li><a href="#" onclick="xajax_cobranza()">Vencido</a>
 					<ul>
