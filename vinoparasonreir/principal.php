@@ -120,6 +120,8 @@ $xajax = new xajax();
 	$xajax->registerFunction("agregar_costo_pollo");
 	$xajax->registerFunction("agregar_costo_pollo_detalle");
 	$xajax->registerFunction("eliminar_costo_pollos");
+	$xajax->registerFunction("editar_costo_pollo");
+	$xajax->registerFunction("editar_costo_pollo_2");
 	//metros
 	$xajax->registerFunction("metros");
 	$xajax->registerFunction("editar_compra_metros");

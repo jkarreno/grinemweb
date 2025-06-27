@@ -257,7 +257,7 @@ function agregar_costo($form=NULL)
 					<td class="texto" align="right" bgcolor="#CCCCCC" style="border:1px solid #FFFFFF"><input type="text" name="t_transporte" id="t_transporte" class="input" value="0"></td>
 				</tr>
 				<tr>
-					<td class="texto" align="right" bgcolor="#CCCCCC" style="border:1px solid #FFFFFF">Comisi�n Vendedor <select name="comven" id="comven" onchange="comision_vendedor(precioventa.value, this.value, cu_comisionvendedor); costos(cu_comisionvendedor.value, c_comisionvendedor.value, t_comisionvendedor); costo_prenda(parseFloat(t_costotela.value), parseFloat(t_disenomolde.value), parseFloat(t_maquila.value), parseFloat(t_boton.value), parseFloat(t_remaches.value), parseFloat(t_cierre.value), parseFloat(t_bordado.value), parseFloat(t_cinturon.value), parseFloat(t_etiqintbor.value), parseFloat(t_placa.value), parseFloat(t_etiqtallainterna.value), parseFloat(t_etiqadherible.value), parseFloat(t_etiqtallaexterna.value), parseFloat(t_etiqcolgante.value), parseFloat(t_etiqmonarch.value), parseFloat(t_etiquetapielexterna.value), parseFloat(t_lavado.value), parseFloat(t_transfer.value), parseFloat(t_terminado.value), parseFloat(t_transporte.value), parseFloat(t_comisionvendedor.value), parseFloat(t_utilidadgabriel.value), costoporprenda); costo_utilidad(parseFloat(costoporprenda.value), parseFloat(precioventa.value), utilidad); costo_utilidad_real(utilidad.value, tprendas.value, utilidadreal)">';
+					<td class="texto" align="right" bgcolor="#CCCCCC" style="border:1px solid #FFFFFF">Comisión Vendedor <select name="comven" id="comven" onchange="comision_vendedor(precioventa.value, this.value, cu_comisionvendedor); costos(cu_comisionvendedor.value, c_comisionvendedor.value, t_comisionvendedor); costo_prenda(parseFloat(t_costotela.value), parseFloat(t_disenomolde.value), parseFloat(t_maquila.value), parseFloat(t_boton.value), parseFloat(t_remaches.value), parseFloat(t_cierre.value), parseFloat(t_bordado.value), parseFloat(t_cinturon.value), parseFloat(t_etiqintbor.value), parseFloat(t_placa.value), parseFloat(t_etiqtallainterna.value), parseFloat(t_etiqadherible.value), parseFloat(t_etiqtallaexterna.value), parseFloat(t_etiqcolgante.value), parseFloat(t_etiqmonarch.value), parseFloat(t_etiquetapielexterna.value), parseFloat(t_lavado.value), parseFloat(t_transfer.value), parseFloat(t_terminado.value), parseFloat(t_transporte.value), parseFloat(t_comisionvendedor.value), parseFloat(t_utilidadgabriel.value), costoporprenda); costo_utilidad(parseFloat(costoporprenda.value), parseFloat(precioventa.value), utilidad); costo_utilidad_real(utilidad.value, tprendas.value, utilidadreal)">';
 	for($i=0;$i<=20;$i++)
 	{
 		if($i<=9){$i='0'.$i;}
@@ -1055,18 +1055,18 @@ function costos_pollos()
 					<td bgcolor="#5263ab" align="center" class="texto3" style="border:1px solid #FFFFFF">&nbsp;</td>
 				</tr>';
 			
-	$ResPollos = mysql_query("SELECT Id, Producto, PrecioVenta FROM costos_pollos WHERE IdProducto IS NULL ORDER BY Id ASC"); 
+	$ResPollos = mysql_query("SELECT Id, Producto, PrecioVenta, Total FROM costos_pollos WHERE IdProducto IS NULL AND Activo = 1 ORDER BY Id ASC"); 
 	$i=1;
 	while($RResP = mysql_fetch_array($ResPollos))
 	{
-		$ResCosto = mysql_fetch_array(mysql_query("SELECT SUM(Total) AS CostoReal FROM costos_pollos WHERE IdProducto = '".$RResP["Id"]."'"));
+		//$ResCosto = mysql_fetch_array(mysql_query("SELECT SUM(Total) AS CostoReal FROM costos_pollos WHERE IdProducto = '".$RResP["Id"]."'"));
 
 		$cadena.='<tr>
 					<td class="texto" align="left" bgcolor="#CCCCCC" style="border:1px solid #FFFFFF">'.$i.'</td>
 					<td class="texto" align="left" bgcolor="#CCCCCC" style="border:1px solid #FFFFFF">'.$RResP["Producto"].'</td>
-					<td class="texto" align="right" bgcolor="#CCCCCC" style="border:1px solid #FFFFFF">$ '.number_format($ResCosto["CostoReal"], 2).'</td>
+					<td class="texto" align="right" bgcolor="#CCCCCC" style="border:1px solid #FFFFFF">$ '.number_format($RResP["Total"], 2).'</td>
 					<td class="texto" align="right" bgcolor="#CCCCCC" style="border:1px solid #FFFFFF">$ '.number_format($RResP["PrecioVenta"], 2).'</td>
-					<td class="texto" align="center" bgcolor="#CCCCCC" style="border:1px solid #FFFFFF"><a href="#" onclick="xajax_agregar_costo_pollo(\'\', \''.$RResP["Id"].'\')"><img src="images/edit.png"></a></td>
+					<td class="texto" align="center" bgcolor="#CCCCCC" style="border:1px solid #FFFFFF"><a href="#" onclick="xajax_editar_costo_pollo(\''.$RResP["Id"].'\')"><img src="images/edit.png"></a></td>
 					<td class="texto" align="center" bgcolor="#CCCCCC" style="border:1px solid #FFFFFF"><a href="#" onclick="xajax_eliminar_costo_pollos(\''.$RResP["Id"].'\')"><img src="images/x.png"></a></td>
 				</tr>';
 		$i++;
@@ -1077,47 +1077,11 @@ function costos_pollos()
 	$respuesta->addAssign("contenido","innerHTML",utf8_encode($cadena));
 	return $respuesta;
 }
-function agregar_costo_pollo($form=NULL, $idprod=NULL)
+function agregar_costo_pollo()
 {
 	include ("conexion.php");
 
-	if($form!=NULL AND $idprod==NULL)
-	{
-		if($form["idproducto"]!=0)
-		{
-			mysql_query("UPDATE costos_pollos SET Producto = '".$form["producto"]."',
-													PrecioVenta = '".$form["precioventa"]."'
-											WHERE Id= '".$form["idproducto"]."'");
-
-			$IdProducto = $form["idproducto"];
-			$producto = $form["producto"];
-			$precioventa = $form["precioventa"];
-
-			$mensaje = '<p align="center" class="textomensaje">Se actualizo el producto '.$producto.' satisfactoriamente</p>';
-		}
-		else
-		{
-			mysql_query("INSERT INTO costos_pollos (Producto, PrecioVenta) VALUES ('".$form["producto"]."', '".$form["precioventa"]."')");
-
-			$ResProducto = mysql_fetch_array(mysql_query("SELECT Id, Producto, PrecioVenta FROM costos_pollos WHERE Producto='".$form["producto"]."' ORDER BY Id DESC LIMIT 1"));
-
-			$IdProducto = $ResProducto["Id"];
-			$producto = $ResProducto["Producto"];
-			$precioventa = $ResProducto["PrecioVenta"];
-
-			$mensaje = '<p align="center" class="textomensaje">Se agrego el producto '.$producto.' satisfactoriamente</p>';
-		}
-	}
-	elseif($form==NULL AND $idprod!=NULL)
-	{
-		$ResProducto = mysql_fetch_array(mysql_query("SELECT Id, Producto, PrecioVenta FROM costos_pollos WHERE Id='".$idprod."' ORDER BY Id DESC LIMIT 1"));
-
-			$IdProducto = $ResProducto["Id"];
-			$producto = $ResProducto["Producto"];
-			$precioventa = $ResProducto["PrecioVenta"];
-	}
-
-	$cadena=$mensaje.'<form name="fadcostopollo" id="fadcostopollo">
+	$cadena='<form name="fadcostopollo" id="fadcostopollo">
 			<table style="border:1px solid #FFFFFF" cellpadding="3" cellspacing="0" align="center">
 				<tr>
 					<td align="left" class="texto" colspan="4">
@@ -1130,144 +1094,91 @@ function agregar_costo_pollo($form=NULL, $idprod=NULL)
 								<td class="texto" align="left" bgcolor="#CCCCCC" style="border:1px solid #FFFFFF"><input type="text" name="producto" id="producto" class="input" value="'.$producto.'"></td>
 								<td class="texto" align="left" bgcolor="#CCCCCC" style="border:1px solid #FFFFFF"></td>
 							</tr>
+						</table>
+					</td>
+				</tr>
+				<tr>
+					<td class="texto3" align="center" bgcolor="#5263ab" style="border:1px solid #FFFFFF">&nbsp;</td>
+					<td class="texto3" align="center" bgcolor="#5263ab" style="border:1px solid #FFFFFF">Costo Unidad</td>
+					<td class="texto3" align="center" bgcolor="#5263ab" style="border:1px solid #FFFFFF">Cantidad</td>
+					<td class="texto3" align="center" bgcolor="#5263ab" style="border:1px solid #FFFFFF">Total</td>
+				</tr>';
+	for($i=1; $i<=20; $i++)
+	{
+		$cadena.='<tr>
+					<td class="texto" align="right" bgcolor="#CCCCCC" style="border:1px solid #FFFFFF"><input type="text" name="matprim_'.$i.'" id="matprim_'.$i.'" class="input"></td>
+					<td class="texto" align="right" bgcolor="#CCCCCC" style="border:1px solid #FFFFFF"><input type="text" name="costo_'.$i.'" id="costo_'.$i.'" class="input" onkeyup="costos(this.value, cantidad_'.$i.'.value, total_'.$i.');costo_prenda(parseFloat(total_1.value), parseFloat(total_2.value), parseFloat(total_3.value), parseFloat(total_4.value), parseFloat(total_5.value), parseFloat(total_6.value), parseFloat(total_7.value), parseFloat(total_8.value), parseFloat(total_9.value), parseFloat(total_10.value), parseFloat(total_11.value), parseFloat(total_12.value), parseFloat(total_13.value), parseFloat(total_14.value), parseFloat(total_15.value), parseFloat(total_16.value), parseFloat(total_17.value), parseFloat(total_18.value), parseFloat(total_19.value), parseFloat(total_20.value), parseFloat(t_comisionvendedor.value), 0, costoporprenda)"></td>
+					<td class="texto" align="right" bgcolor="#CCCCCC" style="border:1px solid #FFFFFF"><input type="text" name="cantidad_'.$i.'" id="cantidad_'.$i.'" class="input" onkeyup="costos(costo_'.$i.'.value, this.value, total_'.$i.');costo_prenda(parseFloat(total_1.value), parseFloat(total_2.value), parseFloat(total_3.value), parseFloat(total_4.value), parseFloat(total_5.value), parseFloat(total_6.value), parseFloat(total_7.value), parseFloat(total_8.value), parseFloat(total_9.value), parseFloat(total_10.value), parseFloat(total_11.value), parseFloat(total_12.value), parseFloat(total_13.value), parseFloat(total_14.value), parseFloat(total_15.value), parseFloat(total_16.value), parseFloat(total_17.value), parseFloat(total_18.value), parseFloat(total_19.value), parseFloat(total_20.value), parseFloat(t_comisionvendedor.value), 0, costoporprenda)"></td>
+					<td class="texto" align="right" bgcolor="#CCCCCC" style="border:1px solid #FFFFFF"><input type="text" name="total_'.$i.'" id="total_'.$i.'" class="input" value="0"></td>
+				</tr>';
+	}
+	$cadena.='	<tr>
+					<td class="texto" align="right" bgcolor="#CCCCCC" style="border:1px solid #FFFFFF">Comisi&oacute;n Vendedor <select name="comven" id="comven" onchange="comision_vendedor(precioventa.value, this.value, cu_comisionvendedor); costos(cu_comisionvendedor.value, c_comisionvendedor.value, t_comisionvendedor); costo_prenda(parseFloat(total_1.value), parseFloat(total_2.value), parseFloat(total_3.value), parseFloat(total_4.value), parseFloat(total_5.value), parseFloat(total_6.value), parseFloat(total_7.value), parseFloat(total_8.value), parseFloat(total_9.value), parseFloat(total_10.value), parseFloat(total_11.value), parseFloat(total_12.value), parseFloat(total_13.value), parseFloat(total_14.value), parseFloat(total_15.value), parseFloat(total_16.value), parseFloat(total_17.value), parseFloat(total_18.value), parseFloat(total_19.value), parseFloat(total_20.value), parseFloat(t_comisionvendedor.value), 0, costoporprenda)">';
+	for($i=0;$i<=20;$i++)
+	{
+		if($i<=9){$i='0'.$i;}
+		$cadena.='		<option value="'.$i.'">'.$i.'</option>';
+	}
+	$cadena.='		</select> % : </td>
+					<td class="texto" align="right" bgcolor="#CCCCCC" style="border:1px solid #FFFFFF"><input type="text" name="cu_comisionvendedor" id="cu_comisionvendedor" class="input"></td>
+					<td class="texto" align="right" bgcolor="#CCCCCC" style="border:1px solid #FFFFFF"><input type="text" name="c_comisionvendedor" id="c_comisionvendedor" class="input" value="1" onkeyup="costo_prenda(parseFloat(total_1.value), parseFloat(total_2.value), parseFloat(total_3.value), parseFloat(total_4.value), parseFloat(total_5.value), parseFloat(total_6.value), parseFloat(total_7.value), parseFloat(total_8.value), parseFloat(total_9.value), parseFloat(total_10.value), parseFloat(total_11.value), parseFloat(total_12.value), parseFloat(total_13.value), parseFloat(total_14.value), parseFloat(total_15.value), parseFloat(total_16.value), parseFloat(total_17.value), parseFloat(total_18.value), parseFloat(total_19.value), parseFloat(total_20.value), parseFloat(t_comisionvendedor.value), 0, costoporprenda)"></td>
+					<td class="texto" align="right" bgcolor="#CCCCCC" style="border:1px solid #FFFFFF"><input type="text" name="t_comisionvendedor" id="t_comisionvendedor" class="input" value="0" onkeyup="costo_prenda(parseFloat(total_1.value), parseFloat(total_2.value), parseFloat(total_3.value), parseFloat(total_4.value), parseFloat(total_5.value), parseFloat(total_6.value), parseFloat(total_7.value), parseFloat(total_8.value), parseFloat(total_9.value), parseFloat(total_10.value), parseFloat(total_11.value), parseFloat(total_12.value), parseFloat(total_13.value), parseFloat(total_14.value), parseFloat(total_15.value), parseFloat(total_16.value), parseFloat(total_17.value), parseFloat(total_18.value), parseFloat(total_19.value), parseFloat(total_20.value), parseFloat(t_comisionvendedor.value), 0, costoporprenda)"></td>
+				</tr>
+				<tr>
+					<td colspan="2" class="texto" align="left">
+						<table style="border:1px solid #FFFFFF" cellpadding="3" cellspacing="0" align="left">
+							<tr>
+								<td class="texto" align="right" bgcolor="#CCCCCC" style="border:1px solid #FFFFFF">Costo Real: </td>
+								<td class="texto" align="right" bgcolor="#CCCCCC" style="border:1px solid #FFFFFF"><input type="text" name="costoporprenda" id="costoporprenda" class="input"></td>
+							</tr>
 							<tr>
 								<td class="texto" align="right" bgcolor="#CCCCCC" style="border:1px solid #FFFFFF">Precio Venta: </td>
-								<td class="texto" align="left" bgcolor="#CCCCCC" style="border:1px solid #FFFFFF"><input type="text" name="precioventa" id="precioventa" class="input" value="'.$precioventa.'"></td>
-								<td class="texto" align="left" bgcolor="#CCCCCC" style="border:1px solid #FFFFFF">
-									<input type="hidden" name="hacer" id="hacer" value="guardapollo">
-									<input type="hidden" name="idproducto" id="idproducto" value="'.(isset($IdProducto) ? $IdProducto : '0').'">
-									<input type="button" name="botguardarprod" id="botguardarprod" value="Guardar" onclick="xajax_agregar_costo_pollo(xajax.getFormValues(\'fadcostopollo\'))">
-								</td>
+								<td class="texto" align="right" bgcolor="#CCCCCC" style="border:1px solid #FFFFFF"><input type="text" name="precioventa" id="precioventa" class="input" onkeyup="comision_vendedor(this.value, comven.value, cu_comisionvendedor); costos(cu_comisionvendedor.value, c_comisionvendedor.value, t_comisionvendedor); costo_prenda(parseFloat(t_costotela.value), parseFloat(t_disenomolde.value), parseFloat(t_maquila.value), parseFloat(t_boton.value), parseFloat(t_remaches.value), parseFloat(t_cierre.value), parseFloat(t_bordado.value), parseFloat(t_cinturon.value), parseFloat(t_etiqintbor.value), parseFloat(t_placa.value), parseFloat(t_etiqtallainterna.value), parseFloat(t_etiqtallaexterna.value), parseFloat(t_etiqcolgante.value), parseFloat(t_etiqmonarch.value), parseFloat(t_etiquetapielexterna.value), parseFloat(t_lavado.value), parseFloat(t_transfer.value), parseFloat(t_terminado.value), parseFloat(t_transporte.value), parseFloat(t_comisionvendedor.value), parseFloat(t_utilidadgabriel.value), costoporprenda); costo_utilidad(parseFloat(costoporprenda.value), parseFloat(this.value), utilidad); costo_utilidad_real(utilidad.value, tprendas.value, utilidadreal)"></td>
 							</tr>
 						</table>
+					</td>
+					<td colspan="2" class="texto" align="center">
+						<input type="button" name="botadcosto" id="botadcosto" value="Guardar" class="boton" onclick="xajax_agregar_costo_pollo_detalle(xajax.getFormValues(\'fadcostopollo\'))">
 					</td>
 				</tr>
 			</table>
 			</form>';
-		
-		if(isset($IdProducto))
-		{
-			$cadena.='<div id="divcostopollo">
-				<form name="fcostodetalleprod" id="fcostodetalleprod">
-				<table style="border:1px solid #FFFFFF" cellpadding="3" cellspacing="0" align="center">
-					<tr>
-						<td class="texto" align="center" bgcolor="#5263ab" style="border:1px solid #FFFFFF">Producto</td>
-						<td class="texto" align="center" bgcolor="#5263ab" style="border:1px solid #FFFFFF">Costo</td>
-						<td class="texto" align="center" bgcolor="#5263ab" style="border:1px solid #FFFFFF">Cantidad</td>
-						<td class="texto" align="center" bgcolor="#5263ab" style="border:1px solid #FFFFFF"Total</td>
-						<td class="texto" align="center" bgcolor="#5263ab" style="border:1px solid #FFFFFF">&nbsp;</td>
-					</tr>
-					<tr>
-						<td class="texto" align="right" bgcolor="#CCCCCC" style="border:1px solid #FFFFFF">
-							<input type="text" name="producto" id="producto" class="input">
-						</td>
-						<td class="texto" align="right" bgcolor="#CCCCCC" style="border:1px solid #FFFFFF">
-							<input type="text" name="costo" id="costo" class="input" onkeyup="costos(this.value, cantidad.value, total)" value="0">
-						</td>
-						<td class="texto" align="right" bgcolor="#CCCCCC" style="border:1px solid #FFFFFF">
-							<input type="text" name="cantidad" id="cantidad" class="input" onkeyup="costos(costo.value, this.value, total)" value="0">
-						</td>
-						<td class="texto" align="right" bgcolor="#CCCCCC" style="border:1px solid #FFFFFF">
-							<input type="text" name="total" id="total" class="input" value="0">
-						</td>
-						<td class="texto" align="right" bgcolor="#CCCCCC" style="border:1px solid #FFFFFF">
-							<input type="hidden" name="idproducto" id="idproducto" value="'.$IdProducto.'">
-							<input type="button" name="botguardarprod" id="botguardarprod" value="Guardar" onclick="xajax_agregar_costo_pollo_detalle(xajax.getFormValues(\'fcostodetalleprod\'))">
-						</td>
-					</tr>';
-			$ResCostoPolloDetalle = mysql_query("SELECT * FROM costos_pollos WHERE IdProducto='".$IdProducto."' ORDER BY Id ASC");
-			while($RResCPD = mysql_fetch_array($ResCostoPolloDetalle))
-			{
-				$cadena.='<tr>
-						<td class="texto" align="left" bgcolor="#FFFFFF" style="border:1px solid #FFFFFF">'.$RResCPD["Producto"].'</td>
-						<td class="texto" align="right" bgcolor="#FFFFFF" style="border:1px solid #FFFFFF">'.$RResCPD["Costo"].'</td>
-						<td class="texto" align="right" bgcolor="#FFFFFF" style="border:1px solid #FFFFFF">'.$RResCPD["Cantidad"].'</td>
-						<td class="texto" align="right" bgcolor="#FFFFFF" style="border:1px solid #FFFFFF">'.$RResCPD["Total"].'</td>
-						<td class="texto" align="center" bgcolor="#FFFFFF" style="border:1px solid #FFFFFF"><a href="#" onclick="xajax_agregar_costo_pollo_detalle(\''.$RResCPD["Id"].'\', \''.$IdProducto.'\')"><img src="images/x.png"></a></td>
-					</tr>';
-			}
-			$cadena.='</table>
-				</form>
-			</div>';
-		}
-
-		$cadena.='<script>
-			setTimeout(function() { 
-				$(\'.textomensaje\').fadeOut(\'fast\'); 
-			}, 1000)
-		</script>';
 
 
 	$respuesta = new xajaxResponse(); 
 	$respuesta->addAssign("contenido","innerHTML",utf8_encode($cadena));
 	return $respuesta;
 }
-function agregar_costo_pollo_detalle($form, $delprod=NULL)
+function agregar_costo_pollo_detalle($form)
 {
 	include ("conexion.php");
 
-	$cadena='';
+	mysql_query("INSERT INTO costos_pollos (Producto, Costo, Cantidad, Total, PrecioVenta, ComisionVendedor, Fecha, Activo) 
+									VALUES ('".$form["producto"]."', '".$form["costoporprenda"]."', '1', '".$form["costoporprenda"]."', '".$form["precioventa"]."', '".$form["comven"]."', '".date("Y-m-d")."', '1')");
 
-	if($delprod!=NULL)
+	$ResIdPollo = mysql_fetch_array(mysql_query("SELECT Id FROM costos_pollos WHERE Producto = '".$form["producto"]."' ORDER BY Id DESC LIMIT 1"));
+
+	$IdP = $ResIdPollo["Id"];
+
+	for($i=1; $i<=20; $i++)
 	{
-		mysql_query("DELETE FROM costos_pollos WHERE Id = '".$form."'");
-
-		$idproducto = $delprod;
-
-		//$cadena.="DELETE FROM costos_pollos WHERE Id = '".$form."'";
-	}
-	else
-	{
-		$idproducto = $form["idproducto"];
-
-		mysql_query("INSERT INTO costos_pollos (IdProducto, Producto, Costo, Cantidad, Total) 
-										VALUES ('".$idproducto."', '".$form["producto"]."', '".$form["costo"]."', '".$form["cantidad"]."', '".$form["total"]."')");
+		//if($form["matprim_".$i]!=NULL AND $fomr["matprim_".$i]!='')
+		//{
+			mysql_query("INSERT INTO costos_pollos (IdProducto, Producto, Costo, Cantidad, Total, Fecha) 
+										VALUES ('".$IdP."', '".$form["matprim_".$i]."', '".$form["costo_".$i]."', '".$form["cantidad_".$i]."', '".$form["total_".$i]."', '".date("Y-m-d")."')");
+		//}			
 	}
 
-	$cadena.='<form name="fcostodetalleprod" id="fcostodetalleprod">
-				<table style="border:1px solid #FFFFFF" cellpadding="3" cellspacing="0" align="center">
-					<tr>
-						<td class="texto" align="center" bgcolor="#5263ab" style="border:1px solid #FFFFFF">Producto</td>
-						<td class="texto" align="center" bgcolor="#5263ab" style="border:1px solid #FFFFFF">Costo</td>
-						<td class="texto" align="center" bgcolor="#5263ab" style="border:1px solid #FFFFFF">Cantidad</td>
-						<td class="texto" align="center" bgcolor="#5263ab" style="border:1px solid #FFFFFF"Total</td>
-						<td class="texto" align="center" bgcolor="#5263ab" style="border:1px solid #FFFFFF">&nbsp;</td>
-					</tr>
-					<tr>
-						<td class="texto" align="right" bgcolor="#CCCCCC" style="border:1px solid #FFFFFF">
-							<input type="text" name="producto" id="producto" class="input">
-						</td>
-						<td class="texto" align="right" bgcolor="#CCCCCC" style="border:1px solid #FFFFFF">
-							<input type="text" name="costo" id="costo" class="input" onkeyup="costos(this.value, cantidad.value, total)" value="0">
-						</td>
-						<td class="texto" align="right" bgcolor="#CCCCCC" style="border:1px solid #FFFFFF">
-							<input type="text" name="cantidad" id="cantidad" class="input" onkeyup="costos(costo.value, this.value, total)" value="0">
-						</td>
-						<td class="texto" align="right" bgcolor="#CCCCCC" style="border:1px solid #FFFFFF">
-							<input type="text" name="total" id="total" class="input" value="0">
-						</td>
-						<td class="texto" align="right" bgcolor="#CCCCCC" style="border:1px solid #FFFFFF">
-							<input type="hidden" name="idproducto" id="idproducto" value="'.$idproducto.'">
-							<input type="button" name="botguardarprod" id="botguardarprod" value="Guardar" onclick="xajax_agregar_costo_pollo_detalle(xajax.getFormValues(\'fcostodetalleprod\'))">
-						</td>
-					</tr>';
-	$ResCostoPolloDetalle = mysql_query("SELECT * FROM costos_pollos WHERE IdProducto='".$idproducto."' ORDER BY Id ASC");
-	while($RResCPD = mysql_fetch_array($ResCostoPolloDetalle))
+	if($form["comven"]!='00')
 	{
-		$cadena.='<tr>
-					<td class="texto" align="left" bgcolor="#FFFFFF" style="border:1px solid #FFFFFF">'.$RResCPD["Producto"].'</td>
-					<td class="texto" align="right" bgcolor="#FFFFFF" style="border:1px solid #FFFFFF">'.$RResCPD["Costo"].'</td>
-					<td class="texto" align="right" bgcolor="#FFFFFF" style="border:1px solid #FFFFFF">'.$RResCPD["Cantidad"].'</td>
-					<td class="texto" align="right" bgcolor="#FFFFFF" style="border:1px solid #FFFFFF">'.$RResCPD["Total"].'</td>
-					<td class="texto" align="center" bgcolor="#FFFFFF" style="border:1px solid #FFFFFF"><a href="#" onclick="xajax_agregar_costo_pollo_detalle(\''.$RResCPD["Id"].'\', \''.$idproducto.'\')"><img src="images/x.png"></a></td>
-				</tr>';
+		mysql_query("INSERT INTO costos_pollos (IdProducto, Producto, Costo, Cantidad, Total, Fecha) 
+										VALUES ('".$IdP."', 'ComisionVendedor', '".$form["cu_comisionvendedor"]."', '".$form["c_comisionvendedor"]."', '".$form["t_comisionvendedor"]."', '".date("Y-m-d")."')");
 	}
-	$cadena.='</table>
-			</form>';
 
+	$cadena='<p align="center" class="textomensaje">Se agrego el producto '.$producto.' satisfactoriamente</p>';
 
 	$respuesta = new xajaxResponse(); 
-	$respuesta->addAssign("divcostopollo","innerHTML",utf8_encode($cadena));
+	$respuesta->addAssign("contenido","innerHTML",utf8_encode($cadena));
 	return $respuesta;
 }
 
@@ -1289,6 +1200,123 @@ function eliminar_costo_pollos($costo, $borra='no')
 		$cadena='<p align="center" class="textomensaje">Se elimino el producto '.$Respollo["Producto"].' satisfactoriamente</p>';
 	}
 	
+	$respuesta = new xajaxResponse(); 
+	$respuesta->addAssign("contenido","innerHTML",utf8_encode($cadena));
+	return $respuesta;
+}
+function editar_costo_pollo($idp)
+{
+	include ("conexion.php");
+
+	$ResCP=mysql_fetch_array(mysql_query("SELECT Id, Producto, PrecioVenta, Total, ComisionVendedor, ProductoOrigen FROM costos_pollos WHERE Id='".$idp."' LIMIT 1"));	
+
+	$cadena='<form name="fadcostopollo" id="fadcostopollo">
+			<table style="border:1px solid #FFFFFF" cellpadding="3" cellspacing="0" align="center">
+				<tr>
+					<td align="left" class="texto" colspan="4">
+						<table style="border:1px solid #FFFFFF" cellpadding="3" cellspacing="0" align="left">
+							<tr>
+								<td colspan="3" bgcolor="#5263ab" align="center" class="texto3" style="border:1px solid #FFFFFF">Costo Real</td>
+							</tr>
+							<tr>
+								<td class="texto" align="right" bgcolor="#CCCCCC" style="border:1px solid #FFFFFF">Producto: </td>
+								<td class="texto" align="left" bgcolor="#CCCCCC" style="border:1px solid #FFFFFF"><input type="text" name="producto" id="producto" class="input" value="'.$ResCP["Producto"].'"></td>
+								<td class="texto" align="left" bgcolor="#CCCCCC" style="border:1px solid #FFFFFF"></td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+				<tr>
+					<td class="texto3" align="center" bgcolor="#5263ab" style="border:1px solid #FFFFFF">&nbsp;</td>
+					<td class="texto3" align="center" bgcolor="#5263ab" style="border:1px solid #FFFFFF">Costo Unidad</td>
+					<td class="texto3" align="center" bgcolor="#5263ab" style="border:1px solid #FFFFFF">Cantidad</td>
+					<td class="texto3" align="center" bgcolor="#5263ab" style="border:1px solid #FFFFFF">Total</td>
+				</tr>';
+	$ResDCP = mysql_query("SELECT * FROM costos_pollos WHERE IdProducto = '".$ResCP["Id"]."' AND Producto != 'ComisionVendedor' ORDER BY Id ASC");
+	$i=1;
+	while($RResDCP = mysql_fetch_array($ResDCP))
+	{
+		$cadena.='<tr>
+					<td class="texto" align="right" bgcolor="#CCCCCC" style="border:1px solid #FFFFFF"><input type="hidden" name="id_'.$i.'" id="id_'.$i.'" value="'.$RResDCP["Id"].'"><input type="text" name="matprim_'.$i.'" id="matprim_'.$i.'" class="input" value="'.$RResDCP["Producto"].'"></td>
+					<td class="texto" align="right" bgcolor="#CCCCCC" style="border:1px solid #FFFFFF"><input type="text" name="costo_'.$i.'" id="costo_'.$i.'" class="input" value="'.$RResDCP["Costo"].'" onkeyup="costos(this.value, cantidad_'.$i.'.value, total_'.$i.');costo_prenda(parseFloat(total_1.value), parseFloat(total_2.value), parseFloat(total_3.value), parseFloat(total_4.value), parseFloat(total_5.value), parseFloat(total_6.value), parseFloat(total_7.value), parseFloat(total_8.value), parseFloat(total_9.value), parseFloat(total_10.value), parseFloat(total_11.value), parseFloat(total_12.value), parseFloat(total_13.value), parseFloat(total_14.value), parseFloat(total_15.value), parseFloat(total_16.value), parseFloat(total_17.value), parseFloat(total_18.value), parseFloat(total_19.value), parseFloat(total_20.value), parseFloat(t_comisionvendedor.value), 0, costoporprenda)"></td>
+					<td class="texto" align="right" bgcolor="#CCCCCC" style="border:1px solid #FFFFFF"><input type="text" name="cantidad_'.$i.'" id="cantidad_'.$i.'" class="input" value="'.$RResDCP["Cantidad"].'" onkeyup="costos(costo_'.$i.'.value, this.value, total_'.$i.');costo_prenda(parseFloat(total_1.value), parseFloat(total_2.value), parseFloat(total_3.value), parseFloat(total_4.value), parseFloat(total_5.value), parseFloat(total_6.value), parseFloat(total_7.value), parseFloat(total_8.value), parseFloat(total_9.value), parseFloat(total_10.value), parseFloat(total_11.value), parseFloat(total_12.value), parseFloat(total_13.value), parseFloat(total_14.value), parseFloat(total_15.value), parseFloat(total_16.value), parseFloat(total_17.value), parseFloat(total_18.value), parseFloat(total_19.value), parseFloat(total_20.value), parseFloat(t_comisionvendedor.value), 0, costoporprenda)"></td>
+					<td class="texto" align="right" bgcolor="#CCCCCC" style="border:1px solid #FFFFFF"><input type="text" name="total_'.$i.'" id="total_'.$i.'" class="input" value="'.$RResDCP["Total"].'""></td>
+				</tr>';
+		$i++;
+	}
+	$cadena.='	<tr>
+					<td class="texto" align="right" bgcolor="#CCCCCC" style="border:1px solid #FFFFFF">Comisi&oacute;n Vendedor <select name="comven" id="comven" onchange="comision_vendedor(precioventa.value, this.value, cu_comisionvendedor); costos(cu_comisionvendedor.value, c_comisionvendedor.value, t_comisionvendedor); costo_prenda(parseFloat(total_1.value), parseFloat(total_2.value), parseFloat(total_3.value), parseFloat(total_4.value), parseFloat(total_5.value), parseFloat(total_6.value), parseFloat(total_7.value), parseFloat(total_8.value), parseFloat(total_9.value), parseFloat(total_10.value), parseFloat(total_11.value), parseFloat(total_12.value), parseFloat(total_13.value), parseFloat(total_14.value), parseFloat(total_15.value), parseFloat(total_16.value), parseFloat(total_17.value), parseFloat(total_18.value), parseFloat(total_19.value), parseFloat(total_20.value), parseFloat(t_comisionvendedor.value), 0, costoporprenda)">';
+	for($i=0;$i<=20;$i++)
+	{
+		if($i<=9){$i='0'.$i;}
+		if($ResCP["ComisionVendedor"] <=9){$cv ='0'.$ResCP["ComisionVendedor"] ;}else{$cv = $ResCP["ComisionVendedor"];}
+		$cadena.='		<option value="'.$i.'"'.($i==$cv ? ' selected' : '').'>'.$i.'</option>';
+	}
+
+	$ResDCPCV = mysql_fetch_array(mysql_query("SELECT * FROM costos_pollos WHERE IdProducto = '".$ResCP["Id"]."' AND Producto = 'ComisionVendedor' LIMIT 1"));
+
+	$cadena.='		</select> % : </td>
+					<td class="texto" align="right" bgcolor="#CCCCCC" style="border:1px solid #FFFFFF"><input type="text" name="cu_comisionvendedor" id="cu_comisionvendedor" class="input" value="'.$ResDCPCV["Costo"].'"></td>
+					<td class="texto" align="right" bgcolor="#CCCCCC" style="border:1px solid #FFFFFF"><input type="text" name="c_comisionvendedor" id="c_comisionvendedor" class="input" value="'.$ResDCPCV["Cantidad"].'" onkeyup="costo_prenda(parseFloat(total_1.value), parseFloat(total_2.value), parseFloat(total_3.value), parseFloat(total_4.value), parseFloat(total_5.value), parseFloat(total_6.value), parseFloat(total_7.value), parseFloat(total_8.value), parseFloat(total_9.value), parseFloat(total_10.value), parseFloat(total_11.value), parseFloat(total_12.value), parseFloat(total_13.value), parseFloat(total_14.value), parseFloat(total_15.value), parseFloat(total_16.value), parseFloat(total_17.value), parseFloat(total_18.value), parseFloat(total_19.value), parseFloat(total_20.value), parseFloat(t_comisionvendedor.value), 0, costoporprenda)"></td>
+					<td class="texto" align="right" bgcolor="#CCCCCC" style="border:1px solid #FFFFFF"><input type="text" name="t_comisionvendedor" id="t_comisionvendedor" class="input" value="'.$ResDCPCV["Total"].'" onkeyup="costo_prenda(parseFloat(total_1.value), parseFloat(total_2.value), parseFloat(total_3.value), parseFloat(total_4.value), parseFloat(total_5.value), parseFloat(total_6.value), parseFloat(total_7.value), parseFloat(total_8.value), parseFloat(total_9.value), parseFloat(total_10.value), parseFloat(total_11.value), parseFloat(total_12.value), parseFloat(total_13.value), parseFloat(total_14.value), parseFloat(total_15.value), parseFloat(total_16.value), parseFloat(total_17.value), parseFloat(total_18.value), parseFloat(total_19.value), parseFloat(total_20.value), parseFloat(t_comisionvendedor.value), 0, costoporprenda)"></td>
+				</tr>
+				<tr>
+					<td colspan="2" class="texto" align="left">
+						<table style="border:1px solid #FFFFFF" cellpadding="3" cellspacing="0" align="left">
+							<tr>
+								<td class="texto" align="right" bgcolor="#CCCCCC" style="border:1px solid #FFFFFF">Costo Real: </td>
+								<td class="texto" align="right" bgcolor="#CCCCCC" style="border:1px solid #FFFFFF"><input type="text" name="costoporprenda" id="costoporprenda" class="input" value="'.$ResCP["Total"].'"></td>
+							</tr>
+							<tr>
+								<td class="texto" align="right" bgcolor="#CCCCCC" style="border:1px solid #FFFFFF">Precio Venta: </td>
+								<td class="texto" align="right" bgcolor="#CCCCCC" style="border:1px solid #FFFFFF"><input type="text" name="precioventa" id="precioventa" class="input"  value="'.$ResCP["PrecioVenta"].'" onkeyup="comision_vendedor(this.value, comven.value, cu_comisionvendedor); costos(cu_comisionvendedor.value, c_comisionvendedor.value, t_comisionvendedor); costo_prenda(parseFloat(t_costotela.value), parseFloat(t_disenomolde.value), parseFloat(t_maquila.value), parseFloat(t_boton.value), parseFloat(t_remaches.value), parseFloat(t_cierre.value), parseFloat(t_bordado.value), parseFloat(t_cinturon.value), parseFloat(t_etiqintbor.value), parseFloat(t_placa.value), parseFloat(t_etiqtallainterna.value), parseFloat(t_etiqtallaexterna.value), parseFloat(t_etiqcolgante.value), parseFloat(t_etiqmonarch.value), parseFloat(t_etiquetapielexterna.value), parseFloat(t_lavado.value), parseFloat(t_transfer.value), parseFloat(t_terminado.value), parseFloat(t_transporte.value), parseFloat(t_comisionvendedor.value), parseFloat(t_utilidadgabriel.value), costoporprenda); costo_utilidad(parseFloat(costoporprenda.value), parseFloat(this.value), utilidad); costo_utilidad_real(utilidad.value, tprendas.value, utilidadreal)"></td>
+							</tr>
+						</table>
+					</td>
+					<td colspan="2" class="texto" align="center">
+						<input type="hidden" name="prodorigen" id="prodorigen" value="'.($ResCP["ProductoOrigen"]==NULL ? $ResCP["Id"] : $ResCP["ProductoOrigen"]).'">
+						<input type="hidden" name="idp" id="idp" value="'.$ResCP["Id"].'">
+						<input type="button" name="botadcosto" id="botadcosto" value="Guardar" class="boton" onclick="xajax_editar_costo_pollo_2(xajax.getFormValues(\'fadcostopollo\'))">
+					</td>
+				</tr>
+			</table>
+			</form>';
+	
+
+	$respuesta = new xajaxResponse(); 
+	$respuesta->addAssign("contenido","innerHTML",utf8_encode($cadena));
+	return $respuesta;
+}
+function editar_costo_pollo_2($form)
+{
+	include ("conexion.php");
+
+	mysql_query("UPDATE costos_pollos SET Activo = 0 WHERE Id = '".$form["idp"]."'");
+
+	mysql_query("INSERT INTO costos_pollos (Producto, Costo, Cantidad, Total, PrecioVenta, ComisionVendedor, ProductoOrigen, Fecha, Activo) 
+									VALUES ('".$form["producto"]."', '".$form["costoporprenda"]."', '1', '".$form["costoporprenda"]."', '".$form["precioventa"]."', '".$form["comven"]."', '".$form["prodorigen"]."', '".date("Y-m-d")."', '1')");
+
+	$ResIdPollo = mysql_fetch_array(mysql_query("SELECT Id FROM costos_pollos WHERE Producto = '".$form["producto"]."' AND Activo = 1 ORDER BY Id DESC LIMIT 1"));
+
+	$IdP = $ResIdPollo["Id"];
+
+	for($i=1; $i<=20; $i++)
+	{
+		//if($form["matprim_".$i]!=NULL AND $fomr["matprim_".$i]!='')
+		//{
+			mysql_query("INSERT INTO costos_pollos (IdProducto, Producto, Costo, Cantidad, Total, Fecha) 
+										VALUES ('".$IdP."', '".$form["matprim_".$i]."', '".$form["costo_".$i]."', '".$form["cantidad_".$i]."', '".$form["total_".$i]."', '".date("Y-m-d")."')");
+		//}			
+	}
+
+	if($form["comven"]!='00')
+	{
+		mysql_query("INSERT INTO costos_pollos (IdProducto, Producto, Costo, Cantidad, Total, Fecha) 
+										VALUES ('".$IdP."', 'ComisionVendedor', '".$form["cu_comisionvendedor"]."', '".$form["c_comisionvendedor"]."', '".$form["t_comisionvendedor"]."', '".date("Y-m-d")."')");
+	}
+
+	$cadena='<p align="center" class="textomensaje">Se guardo el producto '.$producto.' satisfactoriamente</p>';
+
 	$respuesta = new xajaxResponse(); 
 	$respuesta->addAssign("contenido","innerHTML",utf8_encode($cadena));
 	return $respuesta;
