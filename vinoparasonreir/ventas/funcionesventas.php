@@ -209,6 +209,7 @@ function ventas_vs_gastos($anno)
         if($i<=9){$i='0'.$i;}
         $ResVentas = mysql_fetch_array(mysql_query("SELECT SUM(Cantidad) AS Cantidad FROM ventas_pollos WHERE Fecha LIKE '".$anno."-".$i."-%'"));
         $cadena.='  <td class="texto" align="center" style="border:1px solid #FFFFFF; background-color: #CCCCCC;">$ '.number_format($ResVentas['Cantidad'], 2).'</td>';
+		$ventas[$i] = $ResVentas['Cantidad'];
     }
     $cadena.='  </tr>
                 <tr>
@@ -218,8 +219,18 @@ function ventas_vs_gastos($anno)
         if($i<=9){$i='0'.$i;}
         $ResGastos = mysql_fetch_array(mysql_query("SELECT SUM(Cantidad) AS Cantidad FROM gastos_montos WHERE Fecha LIKE '".$anno."-".$i."-%' AND Estado='PAGADO'"));
         $cadena.='  <td class="texto" align="center" style="border:1px solid #FFFFFF; background-color: #CCCCCC;">$ '.number_format($ResGastos['Cantidad'], 2).'</td>';
+		$gastos[$i] = $ResGastos['Cantidad'];
     }
     $cadena.='  </tr>
+				<tr>
+					<td bgcolor="#5263ab" align="center" class="texto3" style="border:1px solid #FFFFFF">GANANCIA</td>';
+	for($i=1; $i<=12; $i++)
+	{
+		if($i<=9){$i='0'.$i;}
+		$ganancia = $ventas[$i] - $gastos[$i];
+		$cadena.='  <td class="texto" align="center" style="border:1px solid #FFFFFF; background-color: #CCCCCC; color: '.($ganancia < 0 ? '#ff0000' : '#000000').'">$ '.number_format($ganancia, 2).'</td>';
+	}
+	$cadena.='  </tr>
             </table>
         </form>';
     
