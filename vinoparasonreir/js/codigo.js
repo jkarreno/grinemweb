@@ -264,6 +264,30 @@ function costo_prenda(total1, total2, total3, total4, total5, total6, total7, to
 	total.value=subtotal.toFixed(2);
 }
 
+//precio venta
+function precio_venta(preciov1, preciov2, preciov3, preciov4, preciov5, preciov6, preciov7, preciov8, preciov9, preciov10, preciov11, preciov12, preciov13, preciov14, preciov15, preciov16, preciov17, preciov18, preciov19, preciov20, total) {
+   subtotal=preciov1+preciov2+preciov3+preciov4+preciov5+preciov6+preciov7+preciov8+preciov9+preciov10+preciov11+preciov12+preciov13+preciov14+preciov15+preciov16+preciov17+preciov18+preciov19+preciov20;
+   total.value=subtotal.toFixed(2); 
+}
+
+//ganancia
+function ganancia(precio, costo, total) {
+   subtotal=precio-costo;
+   total.value=subtotal.toFixed(2);
+}
+
+//utilidad
+function utilidad_pollo(ganancia1, ganancia2, ganancia3, ganancia4, ganancia5, ganancia6, ganancia7, ganancia8, ganancia9, ganancia10, ganancia11, ganancia12, ganancia13, ganancia14, ganancia15, ganancia16, ganancia17, ganancia18, ganancia19, ganancia20, total) {
+   subtotal=ganancia1+ganancia2+ganancia3+ganancia4+ganancia5+ganancia6+ganancia7+ganancia8+ganancia9+ganancia10+ganancia11+ganancia12+ganancia13+ganancia14+ganancia15+ganancia16+ganancia17+ganancia18+ganancia19+ganancia20;
+   total.value=subtotal.toFixed(2); 
+}
+
+//costo-ganancia proyección
+function costo_ganancia_proyeccion(costo, proyeccion, totalp) {
+   subtotal = costo*proyeccion;
+   totalp.value=subtotal.toFixed(2);
+}
+
 //comision vendedor
 function comision_vendedor(costo, porcentaje, total) {
 	subtotal=costo*(porcentaje/100);
