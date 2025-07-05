@@ -287,6 +287,38 @@ function costo_ganancia_proyeccion(costo, proyeccion, totalp) {
    subtotal = costo*proyeccion;
    totalp.value=subtotal.toFixed(2);
 }
+//ganacia proyeccion
+function ganancia_ganancia_proyeccion(proyeccion, precioventa, costop, tgananciap) {
+   subtotal = (precioventa-costop)*proyeccion; //(232-170.22)*100
+   tgananciap.value=subtotal.toFixed(2);
+}
+
+function ganancia_ganancia_mensual(gananciad, gananciam) {
+   subtotal = gananciad*30;
+   gananciam.value=subtotal.toFixed(2);
+}
+
+function actualizarTotales() {
+  const campos = [
+    { clase: "c_m", totalId: "total_costo_meta" },
+    { clase: "t_g_d", totalId: "total_ganancia_diaria" },
+    { clase: "t_g_m", totalId: "total_ganancia_mensual" },
+  ];
+
+  campos.forEach(({ clase, totalId }) => {
+    const inputs = document.querySelectorAll(`input.${clase}`);
+    let suma = 0;
+
+    inputs.forEach(input => {
+      const valor = parseFloat(input.value);
+      if (!isNaN(valor)) {
+        suma += valor;
+      }
+    });
+
+    document.getElementById(totalId).value = suma.toFixed(2);
+  });
+}
 
 //comision vendedor
 function comision_vendedor(costo, porcentaje, total) {
