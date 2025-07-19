@@ -149,6 +149,7 @@ $xajax = new xajax();
 	$xajax->registerFunction("ventas");
 	$xajax->registerFunction("agregar_venta_2");
 	$xajax->registerFunction("ventas_vs_gastos");
+	$xajax->registerFunction("editar_venta_pollos");
 
 	
 	$xajax->processRequests();
@@ -212,9 +213,9 @@ function mueveReloj(){
 						<li><a href="#" onclick="xajax_agregar_cliente()">Agregar Cliente</a></li>
 					</ul>
 				</li>
-				<li><a href="#" onclick="xajax_ventas('','','<?php echo date("Y");?>')">Ventas</a>
+				<li><a href="#" onclick="xajax_ventas('','','','<?php echo date("Y");?>')">Ventas</a>
 					<ul>
-						<li><a href="#" onclick="xajax_ventas_vs_gastos('<?php echo date("Y");?>')">Ventas vs Gastos</a></li>
+						<li><a href="#" onclick="xajax_ventas_vs_gastos('', '<?php echo date("Y");?>')">Ventas vs Gastos</a></li>
 					</ul>
 				</li>
 				<li><a href="#" onclick="xajax_cobranza()">Vencido</a>
@@ -248,12 +249,18 @@ function mueveReloj(){
 					<ul>
 					</ul>
 				</li>-->
-				<li><a href="#" onclick="xajax_gastos_azul(\'\',\'\',\''.date("Y").'\')">Gastos Vino</a>
+				<li><a href=#">Vino</a>
 					<ul>
+						<li><a href="#" onclick="xajax_gastos_azul(\'\',\'\',\''.date("Y").'\')">Gastos</a></a></li>
+						<li><a href="#" onclick="xajax_ventas(\'Vino\',\'\',\'\',\''.date("Y").'\')">Ventas</a></a></li>
+						<li><a href="#" onclick="xajax_ventas_vs_gastos(\'Vino\',\''.date("Y").'\')">Ventas vs Gastos</a></a></li>
 					</ul>
 				</li>
-				<li><a href="#" onclick="xajax_gastos_jack(\'\',\'\',\''.date("Y").'\')">Gastos Jack</a>
+				<li><a href="#">Jack</a>
 					<ul>
+						<li><a href="#" onclick="xajax_gastos_jack(\'\',\'\',\''.date("Y").'\')">Gastos</a></li>
+						<li><a href="#" onclick="xajax_ventas(\'Jack\',\'\',\'\',\''.date("Y").'\')">Ventas</a></li>
+						<li><a href="#" onclick="xajax_ventas_vs_gastos(\'Jack\',\''.date("Y").'\')">Ventas vs gastos</a></li>
 					</ul>
 				</li>
 				<li><a href="#" onclick="xajax_metros()">Inventario</a>

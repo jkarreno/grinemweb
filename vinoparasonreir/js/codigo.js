@@ -302,7 +302,9 @@ function actualizarTotales() {
   const campos = [
     { clase: "c_m", totalId: "total_costo_meta" },
     { clase: "t_g_d", totalId: "total_ganancia_diaria" },
+    { clase: "t_c_m", totalId: "total_costo_mensual" },
     { clase: "t_g_m", totalId: "total_ganancia_mensual" },
+    { clase: "t_v_m", totalId: "total_venta_mensual" },
   ];
 
   campos.forEach(({ clase, totalId }) => {

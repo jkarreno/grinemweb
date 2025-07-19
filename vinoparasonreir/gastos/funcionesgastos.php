@@ -9,7 +9,7 @@ function gastos_jack($accion=NULL, $form=NULL, $anno)
 		case 'adgastojack':
 			//agrega el concepto
 			mysql_query("INSERT INTO gastos (Tipo, Concepto, Aprox, Fijo)
-									 VALUES ('jack',
+									 VALUES ('Jack',
 											 '".utf8_decode($form["concepto"])."',
 											 '".$form["aprox"]."',
 											 '".$form["fijo"]."')") or die(mysql_error());
@@ -240,20 +240,19 @@ function agregar_gasto_jack($anno)
 				<tr>
 					<td class="texto" align="right" bgcolor="#CCCCCC" style="border:1px solid #FFFFFF">Fecha Pago: </td>
 					<td class="texto" align="left" bgcolor="#CCCCCC" style="border:1px solid #FFFFFF"><select name="mes" id="mes">
-							<option value="00">Mes</option>
-							<option value="01">Enero</option>
-							<option value="02">Febrero</option>
-							<option value="03">Marzo</option>
-							<option value="04">Abril</option>
-							<option value="05">Mayo</option>
-							<option value="06">Junio</option>
-							<option value="07">Julio</option>
-							<option value="08">Agosto</option>
-							<option value="09">Septiembre</option>
-							<option value="10">Octubre</option>
-							<option value="11">Noviembre</option>
-							<option value="12">Diciembre</option>
-						</select> <select name="anno" id="anno"><option value="0000">Año</option>';
+							<option value="01"';if(date('m')=='01'){$cadena.=' selected';}$cadena.='>Enero</option>
+							<option value="02"';if(date('m')=='02'){$cadena.=' selected';}$cadena.='>Febrero</option>
+							<option value="03"';if(date('m')=='03'){$cadena.=' selected';}$cadena.='>Marzo</option>
+							<option value="04"';if(date('m')=='04'){$cadena.=' selected';}$cadena.='>Abril</option>
+							<option value="05"';if(date('m')=='05'){$cadena.=' selected';}$cadena.='>Mayo</option>
+							<option value="06"';if(date('m')=='06'){$cadena.=' selected';}$cadena.='>Junio</option>
+							<option value="07"';if(date('m')=='07'){$cadena.=' selected';}$cadena.='>Julio</option>
+							<option value="08"';if(date('m')=='08'){$cadena.=' selected';}$cadena.='>Agosto</option>
+							<option value="09"';if(date('m')=='09'){$cadena.=' selected';}$cadena.='>Septiembre</option>
+							<option value="10"';if(date('m')=='10'){$cadena.=' selected';}$cadena.='>Octubre</option>
+							<option value="11"';if(date('m')=='11'){$cadena.=' selected';}$cadena.='>Noviembre</option>
+							<option value="12"';if(date('m')=='12'){$cadena.=' selected';}$cadena.='>Diciembre</option>
+						</select> <select name="anno" id="anno"><option value="0000">Aï¿½o</option>';
 	for($i=2014; $i<=(date("Y")+2); $i++)
 	{
 		$cadena.='<option value="'.$i.'"';if($i==$anno){$cadena.=' selected';}$cadena.='>'.$i.'</option>';
@@ -262,7 +261,7 @@ function agregar_gasto_jack($anno)
 				</tr>
 				<tr>
 					<td class="texto" align="right" bgcolor="#CCCCCC" style="border:1px solid #FFFFFF">Vencimiento: </td>
-					<td class="texto" align="left" bgcolor="#CCCCCC" style="border:1px solid #FFFFFF"><select name="diav" id="diav"><option value="00">Día</option>';
+					<td class="texto" align="left" bgcolor="#CCCCCC" style="border:1px solid #FFFFFF"><select name="diav" id="diav"><option value="00">Dï¿½a</option>';
 	for($i=1; $i<=31; $i++)
 	{
 		if($i<=9){$i='0'.$i;}
@@ -282,7 +281,7 @@ function agregar_gasto_jack($anno)
 							<option value="10">Octubre</option>
 							<option value="11">Noviembre</option>
 							<option value="12">Diciembre</option>
-						</select> <select name="annov" id="annov"><option value="0000">Año</option>';
+						</select> <select name="annov" id="annov"><option value="0000">AÃ±o</option>';
 	for($i=2014; $i<=(date("Y")+2); $i++)
 	{
 		$cadena.='<option value="'.$i.'"';if($i==$anno){$cadena.=' selected';}$cadena.='>'.$i.'</option>';
@@ -315,7 +314,7 @@ function agregar_gasto_jack($anno)
 				</tr>
 				<tr>
 					<td class="texto" align="center" colspan="2" bgcolor="#CCCCCC" style="border:1px solid #FFFFFF">
-						<input type="button" name="botadventatela" id="botadventatela" value="Agregar>>" class="boton" onclick="lightbox.style.visibility=\'hidden\';  xajax_gastos_jack(\'adgastojack\', xajax.getFormValues(\'fadgastojack\')); document.getElementById(\'lightbox\').innerHTML = \'\'">
+						<input type="button" name="botadventatela" id="botadventatela" value="Agregar>>" class="boton" onclick="lightbox.style.visibility=\'hidden\';  xajax_gastos_jack(\'adgastojack\', xajax.getFormValues(\'fadgastojack\'), \''.$anno.'\'); document.getElementById(\'lightbox\').innerHTML = \'\'">
 					</td>
 				</tr>
 			</table>
@@ -360,7 +359,7 @@ function editar_gasto_jack($gasto, $monto=NULL, $anno)
 							<option value="10"';if($ResMonto["Fecha"][5].$ResMonto["Fecha"][6]=='10'){$cadena.=' selected';}$cadena.='>Octubre</option>
 							<option value="11"';if($ResMonto["Fecha"][5].$ResMonto["Fecha"][6]=='11'){$cadena.=' selected';}$cadena.='>Noviembre</option>
 							<option value="12"';if($ResMonto["Fecha"][5].$ResMonto["Fecha"][6]=='12'){$cadena.=' selected';}$cadena.='>Diciembre</option>
-						</select> <select name="anno" id="anno"><option value="0000">Año</option>';
+						</select> <select name="anno" id="anno"><option value="0000">Aï¿½o</option>';
 	for($i=2014; $i<=(date("Y")+2); $i++)
 	{
 		$cadena.='<option value="'.$i.'"';if($i==$ResMonto["Fecha"][0].$ResMonto["Fecha"][1].$ResMonto["Fecha"][2].$ResMonto["Fecha"][3]){$cadena.=' selected';}$cadena.='>'.$i.'</option>';
@@ -369,7 +368,7 @@ function editar_gasto_jack($gasto, $monto=NULL, $anno)
 				</tr>
 				<tr>
 					<td class="texto" align="right" bgcolor="#CCCCCC" style="border:1px solid #FFFFFF">Vencimiento: </td>
-					<td class="texto" align="left" bgcolor="#CCCCCC" style="border:1px solid #FFFFFF"><select name="diav" id="diav"><option value="00">Día</option>';
+					<td class="texto" align="left" bgcolor="#CCCCCC" style="border:1px solid #FFFFFF"><select name="diav" id="diav"><option value="00">Dï¿½a</option>';
 	for($i=1; $i<=31; $i++)
 	{
 		if($i<=9){$i='0'.$i;}
@@ -389,7 +388,7 @@ function editar_gasto_jack($gasto, $monto=NULL, $anno)
 							<option value="10"';if($ResMonto["Vencimiento"][5].$ResMonto["Vencimiento"][6]=='10'){$cadena.=' selected';}$cadena.='>Octubre</option>
 							<option value="11"';if($ResMonto["Vencimiento"][5].$ResMonto["Vencimiento"][6]=='11'){$cadena.=' selected';}$cadena.='>Noviembre</option>
 							<option value="12"';if($ResMonto["Vencimiento"][5].$ResMonto["Vencimiento"][6]=='12'){$cadena.=' selected';}$cadena.='>Diciembre</option>
-						</select> <select name="annov" id="annov"><option value="0000">Año</option>';
+						</select> <select name="annov" id="annov"><option value="0000">Aï¿½o</option>';
 	for($i=2014; $i<=(date("Y")+2); $i++)
 	{
 		$cadena.='<option value="'.$i.'"';if($i==$ResMonto["Vencimiento"][0].$ResMonto["Vencimiento"][1].$ResMonto["Vencimiento"][2].$ResMonto["Vencimiento"][3]){$cadena.=' selected';}$cadena.='>'.$i.'</option>';
@@ -470,7 +469,7 @@ function editar_gasto_jack_nuevo_monto($gasto, $anno)
 							<option value="10">Octubre</option>
 							<option value="11">Noviembre</option>
 							<option value="12">Diciembre</option>
-						</select> <select name="anno" id="anno"><option value="0000">Año</option>';
+						</select> <select name="anno" id="anno"><option value="0000">Aï¿½o</option>';
 	for($i=2014; $i<=(date("Y")+2); $i++)
 	{
 		$cadena.='<option value="'.$i.'"';if($i==$anno){$cadena.=' selected';}$cadena.='>'.$i.'</option>';
@@ -479,7 +478,7 @@ function editar_gasto_jack_nuevo_monto($gasto, $anno)
 				</tr>
 				<tr>
 					<td class="texto" align="right" bgcolor="#CCCCCC" style="border:1px solid #FFFFFF">Vencimiento: </td>
-					<td class="texto" align="left" bgcolor="#CCCCCC" style="border:1px solid #FFFFFF"><select name="diav" id="diav"><option value="00">Día</option>';
+					<td class="texto" align="left" bgcolor="#CCCCCC" style="border:1px solid #FFFFFF"><select name="diav" id="diav"><option value="00">Dï¿½a</option>';
 	for($i=1; $i<=31; $i++)
 	{
 		if($i<=9){$i='0'.$i;}
@@ -499,7 +498,7 @@ function editar_gasto_jack_nuevo_monto($gasto, $anno)
 							<option value="10">Octubre</option>
 							<option value="11">Noviembre</option>
 							<option value="12">Diciembre</option>
-						</select> <select name="annov" id="annov"><option value="0000">Año</option>';
+						</select> <select name="annov" id="annov"><option value="0000">Aï¿½o</option>';
 	for($i=2014; $i<=(date("Y")+2); $i++)
 	{
 		$cadena.='<option value="'.$i.'"';if($i==$anno){$cadena.=' selected';}$cadena.='>'.$i.'</option>';
