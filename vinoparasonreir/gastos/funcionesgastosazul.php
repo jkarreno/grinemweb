@@ -9,7 +9,7 @@ function gastos_azul($accion=NULL, $form=NULL, $anno)
 		case 'adgastoazul':
 			//agrega el concepto
 			mysql_query("INSERT INTO gastos (Tipo, Concepto, Aprox, Fijo)
-									 VALUES ('azul',
+									 VALUES ('Vino',
 											 '".utf8_decode($form["concepto"])."',
 											 '".$form["aprox"]."',
 											 '".$form["fijo"]."')") or die(mysql_error());
@@ -119,7 +119,7 @@ function gastos_azul($accion=NULL, $form=NULL, $anno)
 					<td bgcolor="#5263ab" align="center" class="texto3" style="border:1px solid #FFFFFF">DICIEMBRE</td>
 					<td bgcolor="#5263ab" align="center" class="texto3" style="border:1px solid #FFFFFF">TOTAL</td>
 				</tr>';
-	$ResGastos=mysql_query("SELECT * FROM gastos WHERE Tipo='azul' ORDER BY Concepto ASC");
+	$ResGastos=mysql_query("SELECT * FROM gastos WHERE Tipo='Vino' ORDER BY Concepto ASC");
 	$A=1; $bgcolor="#CCCCCC"; $B=1;
 	while($RResGastos=mysql_fetch_array($ResGastos))
 	{
@@ -269,18 +269,18 @@ function agregar_gasto_azul($anno)
 	}
 		$cadena.='			</select> <select name="mesv" id="mesv">
 							<option value="00">Mes</option>
-							<option value="01">Enero</option>
-							<option value="02">Febrero</option>
-							<option value="03">Marzo</option>
-							<option value="04">Abril</option>
-							<option value="05">Mayo</option>
-							<option value="06">Junio</option>
-							<option value="07">Julio</option>
-							<option value="08">Agosto</option>
-							<option value="09">Septiembre</option>
-							<option value="10">Octubre</option>
-							<option value="11">Noviembre</option>
-							<option value="12">Diciembre</option>
+							<option value="01"';if(date('m')=='01'){$cadena.=' selected';}$cadena.='>Enero</option>
+							<option value="02"';if(date('m')=='02'){$cadena.=' selected';}$cadena.='>Febrero</option>
+							<option value="03"';if(date('m')=='03'){$cadena.=' selected';}$cadena.='>Marzo</option>
+							<option value="04"';if(date('m')=='04'){$cadena.=' selected';}$cadena.='>Abril</option>
+							<option value="05"';if(date('m')=='05'){$cadena.=' selected';}$cadena.='>Mayo</option>
+							<option value="06"';if(date('m')=='06'){$cadena.=' selected';}$cadena.='>Junio</option>
+							<option value="07"';if(date('m')=='07'){$cadena.=' selected';}$cadena.='>Julio</option>
+							<option value="08"';if(date('m')=='08'){$cadena.=' selected';}$cadena.='>Agosto</option>
+							<option value="09"';if(date('m')=='09'){$cadena.=' selected';}$cadena.='>Septiembre</option>
+							<option value="10"';if(date('m')=='10'){$cadena.=' selected';}$cadena.='>Octubre</option>
+							<option value="11"';if(date('m')=='11'){$cadena.=' selected';}$cadena.='>Noviembre</option>
+							<option value="12"';if(date('m')=='12'){$cadena.=' selected';}$cadena.='>Diciembre</option>
 						</select> <select name="annov" id="annov"><option value="0000">A�o</option>';
 	for($i=2014; $i<=(date("Y")+2); $i++)
 	{
@@ -314,7 +314,7 @@ function agregar_gasto_azul($anno)
 				</tr>
 				<tr>
 					<td class="texto" align="center" colspan="2" bgcolor="#CCCCCC" style="border:1px solid #FFFFFF">
-						<input type="button" name="botadventatela" id="botadventatela" value="Agregar>>" class="boton" onclick="lightbox.style.visibility=\'hidden\';  xajax_gastos_azul(\'adgastoazul\', xajax.getFormValues(\'fadgastoazul\')); document.getElementById(\'lightbox\').innerHTML = \'\'">
+						<input type="button" name="botadventatela" id="botadventatela" value="Agregar>>" class="boton" onclick="lightbox.style.visibility=\'hidden\';  xajax_gastos_azul(\'adgastoazul\', xajax.getFormValues(\'fadgastoazul\'), \''.$anno.'\'); document.getElementById(\'lightbox\').innerHTML = \'\'">
 					</td>
 				</tr>
 			</table>
