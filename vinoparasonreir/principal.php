@@ -249,17 +249,17 @@ function mueveReloj(){
 					<ul>
 					</ul>
 				</li>-->
-				<li><a href=#">Vino</a>
+				<li><a href=#">Gastos Vino</a>
 					<ul>
-						<li><a href="#" onclick="xajax_gastos_azul(\'\',\'\',\''.date("Y").'\')">Gastos</a></a></li>
-						<li><a href="#" onclick="xajax_ventas(\'Vino\',\'\',\'\',\''.date("Y").'\')">Ventas</a></a></li>
+						<li><a href="#" onclick="xajax_gastos_azul(\'\',\'\',\''.date("Y").'\')">Gastos Vino</a></a></li>
+						<li><a href="#" onclick="xajax_ventas(\'Vino\',\'\',\'\',\''.date("Y").'\')">Ventas Vino</a></a></li>
 						<li><a href="#" onclick="xajax_ventas_vs_gastos(\'Vino\',\''.date("Y").'\')">Ventas vs Gastos</a></a></li>
 					</ul>
 				</li>
-				<li><a href="#">Jack</a>
+				<li><a href="#">Gastos Jack</a>
 					<ul>
-						<li><a href="#" onclick="xajax_gastos_jack(\'\',\'\',\''.date("Y").'\')">Gastos</a></li>
-						<li><a href="#" onclick="xajax_ventas(\'Jack\',\'\',\'\',\''.date("Y").'\')">Ventas</a></li>
+						<li><a href="#" onclick="xajax_gastos_jack(\'\',\'\',\''.date("Y").'\')">Gastos Jack</a></li>
+						<li><a href="#" onclick="xajax_ventas(\'Jack\',\'\',\'\',\''.date("Y").'\')">Ventas Jack</a></li>
 						<li><a href="#" onclick="xajax_ventas_vs_gastos(\'Jack\',\''.date("Y").'\')">Ventas vs gastos</a></li>
 					</ul>
 				</li>

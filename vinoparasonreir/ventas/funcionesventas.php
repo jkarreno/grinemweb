@@ -28,7 +28,7 @@ function ventas($tipo=NULL, $accion=NULL, $form=NULL, $anno)
 					<td bgcolor="#FFFFFF" align="right" class="texto" style="border:1px solid #FFFFFF">&nbsp;</td>
 				</tr>
 				<tr>
-					<td colspan="15" bgcolor="#5263ab" align="center" class="texto3" style="border:1px solid #FFFFFF">VENTAS '.$tipo.' '.'<select name="anno" id="anno" onchange="xajax_ventas(\''.$tipo.'\',\'\',\'\', this.value)">';
+					<td colspan="15" bgcolor="#5263ab" align="center" class="texto3" style="border:1px solid #FFFFFF">VENTAS '.strtoupper($tipo).' '.'<select name="anno" id="anno" onchange="xajax_ventas(\''.$tipo.'\',\'\',\'\', this.value)">';
 						for($i=2014; $i<=(date("Y")+2);$i++)
 						{
 							$cadena.='<option value="'.$i.'"';if($i==$anno){$cadena.=' selected';}$cadena.='>'.$i.'</option>';
