@@ -12,11 +12,11 @@ $ssql = "SELECT * FROM usuarios WHERE Username='".$_POST["usuario"]."' and Contr
 //Ejecuto la sentencia 
 $rs = mysql_query($ssql); 
 
-//vemos si el usuario y contraseña es váildo 
-//si la ejecución de la sentencia SQL nos da algún resultado 
-//es que si que existe esa conbinación usuario/contraseña 
+//vemos si el usuario y contraseï¿½a es vï¿½ildo 
+//si la ejecuciï¿½n de la sentencia SQL nos da algï¿½n resultado 
+//es que si que existe esa conbinaciï¿½n usuario/contraseï¿½a 
 if (mysql_num_rows($rs)!=0){ 
-    //usuario y contraseña válidos 
+    //usuario y contraseï¿½a vï¿½lidos 
     $Rowrs=mysql_fetch_array($rs);
     //defino una sesion y guardo datos 
     session_start(); 

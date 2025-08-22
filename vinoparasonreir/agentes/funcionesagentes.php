@@ -3,7 +3,14 @@ function agentes()
 {
 	include ("conexion.php");
 	
-	$cadena='<table style="border:1px solid #FFFFFF" cellpadding="3" cellspacing="0" align="center">
+	$cadena='
+    
+    <table border="0" align="center">
+    <tr>
+    <td valign="top" align="center">
+    
+    
+    <table style="border:1px solid #FFFFFF" cellpadding="3" cellspacing="0" align="center">
 				<tr>
 					<td colspan="6" bgcolor="#5263ab" align="center" class="texto3" style="border:1px solid #FFFFFF">Agentes</td>
 				</tr>
@@ -30,8 +37,68 @@ function agentes()
 				
 		$A++;
 	}
-				
+		
+    		
 	$cadena.='</table>';
+    
+    
+    $cadena.='
+    
+    </td>
+    
+    <td valign="top" align="center">
+
+    
+    ';
+    
+    if($_SESSION["idusuario"] == 1)
+    {        
+        
+    	$cadena.='<table style="border:1px solid #FFFFFF" cellpadding="3" cellspacing="0" align="center">
+					<tr>
+						<td colspan="6" bgcolor="#5263ab" align="center" class="texto3" style="border:1px solid #FFFFFF">Administradores</td>
+					</tr>
+					<tr>
+						<td bgcolor="#5263ab" align="center" class="texto3" style="border:1px solid #FFFFFF">#</td>
+						<td bgcolor="#5263ab" align="center" class="texto3" style="border:1px solid #FFFFFF">Nombre</td>
+						<td bgcolor="#5263ab" align="center" class="texto3" style="border:1px solid #FFFFFF">Telefono</td>
+						<td bgcolor="#5263ab" align="center" class="texto3" style="border:1px solid #FFFFFF">Celular</td>
+						<td bgcolor="#5263ab" align="center" class="texto3" style="border:1px solid #FFFFFF">Correo Electr&oacute;nico</td>
+						<td bgcolor="#5263ab" align="center" class="texto3" style="border:1px solid #FFFFFF">&nbsp;</td>
+					</tr>';
+		
+		$ResAgentes=mysql_query("SELECT * FROM usuarios WHERE Perfil NOT IN ('AgenteV') ORDER BY Nombre ASC"); 
+		$bgcolor="#CCCCCC"; $A=1; $I=1;
+		while($RResAgentes=mysql_fetch_array($ResAgentes))
+		{
+			$cadena.='<tr>
+						<td bgcolor="'.$bgcolor.'" align="center" class="texto" style="border:1px solid #FFFFFF">'.$A.'</td>
+						<td bgcolor="'.$bgcolor.'" align="left" class="texto" style="border:1px solid #FFFFFF">'.$RResAgentes["Nombre"].'</td>
+						<td bgcolor="'.$bgcolor.'" align="left" class="texto" style="border:1px solid #FFFFFF">'.$RResAgentes["Telefono"].'</td>
+						<td bgcolor="'.$bgcolor.'" align="left" class="texto" style="border:1px solid #FFFFFF">'.$RResAgentes["Celular"].'</td>
+						<td bgcolor="'.$bgcolor.'" align="left" class="texto" style="border:1px solid #FFFFFF">'.$RResAgentes["CorreoE"].'</td>
+						<td bgcolor="'.$bgcolor.'" align="center" class="texto" style="border:1px solid #FFFFFF"><a href="#" onclick="xajax_editar_agente(\''.$RResAgentes["Id"].'\')"><img src="images/edit.png" border="0"></a></td>
+					</tr>';
+
+			$A++;
+		}
+
+		$cadena.='
+	
+	
+    	</table>
+	
+    	';
+    
+    }
+            
+    
+    $cadena.='
+                    
+    </td>
+    
+    </tr>
+    </table>';
 
 	$respuesta = new xajaxResponse(); 
 	$respuesta->addAssign("contenido","innerHTML",utf8_encode($cadena));
@@ -67,7 +134,7 @@ function agregar_agente()
 					<td class="texto" align="left" bgcolor="#CCCCCC" style="border:1px solid #FFFFFF"><input type="text" name="user" id="user" class="input" size="100"></td>
 				</tr>
 				<tr>
-					<td class="texto" align="right" bgcolor="#CCCCCC" style="border:1px solid #FFFFFF">Contraseña: </td>
+					<td class="texto" align="right" bgcolor="#CCCCCC" style="border:1px solid #FFFFFF">Contraseï¿½a: </td>
 					<td class="texto" align="left" bgcolor="#CCCCCC" style="border:1px solid #FFFFFF"><input type="text" name="pass" id="pass" class="input" size="100"></td>
 				</tr>
 				<tr>
@@ -126,7 +193,7 @@ function editar_agente($agente)
 					<td class="texto" align="left" bgcolor="#CCCCCC" style="border:1px solid #FFFFFF"><input type="text" name="user" id="user" class="input" size="100" value="'.$ResUser["Username"].'"></td>
 				</tr>
 				<tr>
-					<td class="texto" align="right" bgcolor="#CCCCCC" style="border:1px solid #FFFFFF">Contraseña: </td>
+					<td class="texto" align="right" bgcolor="#CCCCCC" style="border:1px solid #FFFFFF">Contraseï¿½a: </td>
 					<td class="texto" align="left" bgcolor="#CCCCCC" style="border:1px solid #FFFFFF"><input type="text" name="pass" id="pass" class="input" size="100" value="'.$ResUser["Contrasena"].'"></td>
 				</tr>
 				<tr>
