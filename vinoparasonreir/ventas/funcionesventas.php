@@ -6,15 +6,19 @@ function ventas($tipo=NULL, $accion=NULL, $form=NULL, $anno)
     switch ($accion)
     {
         case 'adventa':
-            mysql_query("INSERT INTO ventas_pollos (Tipo, Concepto, Fecha, Cantidad, Comentarios)
-                                            VALUES ('".$tipo."', '".$form['concepto']."', '".$form['anno']."-".$form['mes']."-".$form['dia']."', '".$form['cantidad']."', '".$form['comentarios']."')");
+			$sql= "INSERT INTO ventas_pollos (Tipo, Concepto, Fecha, Cantidad, Comentarios".(isset($form["checka"]) ? ", Checka" : "").")
+                                            VALUES ('".$tipo."', '".$form['concepto']."', '".$form['anno']."-".$form['mes']."-".$form['dia']."', '".$form['cantidad']."', '".$form['comentarios']."'".(isset($form["checka"]) ? ", '".$form["checka"]."'" : "").")";
+
+            mysql_query($sql);
 			break;   
 		case 'editventa':
-			mysql_query("UPDATE ventas_pollos SET Concepto = '".$form["concepto"]."', 
+			$sql="UPDATE ventas_pollos SET Concepto = '".$form["concepto"]."', 
 													Fecha = '".$form["anno"]."-".$form["mes"]."-".$form["dia"]."', 
 													Cantidad = '".$form["cantidad"]."', 
 													Comentarios = '".$form["comentarios"]."' 
-											WHERE Id = '".$form["idventa"]."'");
+													".(isset($form["checka"]) ? "Checka = '".$form["checka"]."'" : "")."
+											WHERE Id = '".$form["idventa"]."'";
+			mysql_query($sql);
 			break;
 
     }
@@ -360,8 +364,15 @@ function agregar_venta_2($tipo=NULL, $anno)
 				<tr>
 					<td class="texto" align="right" bgcolor="#CCCCCC" style="border:1px solid #FFFFFF">Cantidad: </td>
 					<td class="texto" align="left" bgcolor="#CCCCCC" style="border:1px solid #FFFFFF">$ <input type="text" name="cantidad" id="cantidad" class="input" size="100"></td>
-				</tr>
-				<tr>
+				</tr>';
+	if($_SESSION["perfil"]=='administra')
+	{
+		$cadena.='<tr>
+					<td class="texto" align="right" bgcolor="#CCCCCC" style="border: 1px solid #FFFFFF">Check: </td>
+					<td class="texto" align="left" bgcolor="#CCCCCC" style="border: 1px solid #FFFFFF"><input type="checkbox" name="checka" id="checka" value="1">
+				</tr>';
+	}
+	$cadena.='	<tr>
 					<td class="texto" align="right" bgcolor="#CCCCCC" style="border:1px solid #FFFFFF">Comentarios: </td>
 					<td class="texto" align="left" bgcolor="#CCCCCC" style="border:1px solid #FFFFFF"><textarea name="comentarios" id="comentarios" rows="3" cols="50"></textarea></td>
 				</tr>
@@ -508,16 +519,27 @@ function editar_venta_pollos($idventa)
 				<tr>
 					<td class="texto" align="right" bgcolor="#CCCCCC" style="border:1px solid #FFFFFF">Cantidad: </td>
 					<td class="texto" align="left" bgcolor="#CCCCCC" style="border:1px solid #FFFFFF">$ <input type="text" name="cantidad" id="cantidad" class="input" size="100" value="'.$ResV["Cantidad"].'"></td>
-				</tr>
-				<tr>
+				</tr>';
+	if($_SESSION["perfil"]=='administra')
+	{
+		$cadena.='<tr>
+					<td class="texto" align="right" bgcolor="#CCCCCC" style="border: 1px solid #FFFFFF">Check: </td>
+					<td class="texto" align="left" bgcolor="#CCCCCC" style="border: 1px solid #FFFFFF"><input type="checkbox" name="checka" id="checka" value="1">
+				</tr>';
+	}
+	$cadena.='	<tr>
 					<td class="texto" align="right" bgcolor="#CCCCCC" style="border:1px solid #FFFFFF">Comentarios: </td>
 					<td class="texto" align="left" bgcolor="#CCCCCC" style="border:1px solid #FFFFFF"><textarea name="comentarios" id="comentarios" rows="3" cols="50">'.$ResV["Comentarios"].'</textarea></td>
 				</tr>
 				<tr>
 					<td class="texto" align="center" colspan="2" bgcolor="#CCCCCC" style="border:1px solid #FFFFFF">
-						<input type="hidden" name="idventa" id="idventa" value="'.$ResV["Id"].'">
-						<input type="button" name="botadventa" id="botadventa" value="Agregar>>" class="boton" onclick="lightbox.style.visibility=\'hidden\';  xajax_ventas(\''.$ResV["Tipo"].'\', \'editventa\', xajax.getFormValues(\'feditventa\'), \''.$ResV["Fecha"][0].$ResV["Fecha"][1].$ResV["Fecha"][2].$ResV["Fecha"][3].'\'); document.getElementById(\'lightbox\').innerHTML = \'\'">
-					</td>
+						<input type="hidden" name="idventa" id="idventa" value="'.$ResV["Id"].'">';
+	if($_SESSION["perfil"]=='administra' OR $ResV["Checka"]==0)
+	{
+		$cadena.='<input type="button" name="botadventa" id="botadventa" value="Agregar>>" class="boton" onclick="lightbox.style.visibility=\'hidden\';  xajax_ventas(\''.$ResV["Tipo"].'\', \'editventa\', xajax.getFormValues(\'feditventa\'), \''.$ResV["Fecha"][0].$ResV["Fecha"][1].$ResV["Fecha"][2].$ResV["Fecha"][3].'\'); document.getElementById(\'lightbox\').innerHTML = \'\'">';
+
+	}
+	$cadena.='		</td>
 				</tr>
 			</table>
 			</form>';
